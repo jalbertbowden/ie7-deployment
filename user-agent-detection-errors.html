@@ -1,0 +1,387 @@
+
+<h1><span style='mso-bookmark:UserAgentStringIssues'><a name="_Toc194241895">User-Agent String Detection Errors</a></span></h1>
+
+<span style='mso-bookmark:UserAgentStringIssues'></span>
+
+<p style='text-indent:.5in;line-height:140%;vertical-align:top'><span
+style='font-size:11.0pt;line-height:140%;font-family:"Calibri","sans-serif";
+mso-fareast-font-family:Calibri'>Many Web designers use browser-detection
+techniques to customize the experience for specific browser versions. It is
+important to ensure that the techniques chosen take into account future browser
+releases. <span style='mso-spacerun:yes'></span>Several typical browser
+detection techniques fail when they encounter Windows Internet Explorer 7. <span
+style='mso-spacerun:yes'></span>For example, some sites that look great when
+viewed in Internet Explorer 6 might display errors when viewed in Internet
+Explorer 7. This is not caused by any problems with Internet Explorer 7; it
+happens because the browser detection code (either on purpose or by accident) is
+not designed for newer versions of the browser. <o:p></o:p></span></p>
+
+<p style='text-indent:.5in;line-height:140%;vertical-align:top'><span
+style='font-size:11.0pt;line-height:140%;font-family:"Calibri","sans-serif";
+mso-fareast-font-family:Calibri'>In addition to the solutions addressed here,
+Microsoft recommends using feature detection, where the website logic detects
+if a browser is capable of supporting a specific feature.<span
+style='mso-spacerun:yes'> </span>By using feature detection, website owners
+can ensure the experience they want their users to have, regardless of browser
+version and client upgrades.<span style='mso-spacerun:yes'> </span>In the
+enterprise environment this can be especially helpful as well, where the need
+to support legacy applications makes it critical to ensure application compatibility.<span
+style='mso-spacerun:yes'> </span>Feature detection logic could help enterprise
+applications age gracefully while they remain current in a parallel application
+development cycle.<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>: </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>I am trying to reach my website, but instead of loading the normal
+  page I keep getting a message telling me to upgrade my browser version.<span
+  style='mso-spacerun:yes'> </span>I am using IE 7, so why do I see this
+  error?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: This is generally
+  an issue with application logic on the server or code within a webpage that
+  does not recognize the new MSIE 7.0 version number used in Internet
+  Explorer 7.<span style='mso-spacerun:yes'> </span>Prior to the release of IE
+  7 most web development practices accounted for versions up to, and including,
+  6.0.<span style='mso-spacerun:yes'> </span>The logical operators they used
+  did not account for future versions, and an unexpected result higher than 6
+  is causing the application to show an error.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Depending on
+  where the application logic is being performed (in the server or within a
+  webpage), that code would need to be modified to recognize the MSIE 7.0
+  string and accept it as a valid version number. <span
+  style='mso-spacerun:yes'></span>Regardless of where the fix resides, its a
+  trivial bit of code to update and wont cause regression problems.<span
+  style='mso-spacerun:yes'> </span>If the application logic is contained
+  within a webpage, it can be seen by right clicking in the browser window and
+  selecting View Source.<span style='mso-spacerun:yes'> </span>If you do not
+  see some kind of JavaScript browser version checking code in the page, the
+  logic is most likely contained in a server side application.<span
+  style='mso-spacerun:yes'> </span>One common example of web page based
+  browser checking logic is:</p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>if ( ver =
+  6.0 ) <o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>msg =
+  &quot;You're using a recent copy of Internet Explorer.&quot;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>else<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>msg =
+  &quot;You should upgrade your copy of Internet Explorer.&quot;;</span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>The problem with this version checking logic is that it specifically
+  matches a version number, rather than looking for a minimum value.<span
+  style='mso-spacerun:yes'> </span>While this code is not incorrect, it causes
+  unnecessary issues (and unintended errors) with newer browser versions.<span
+  style='mso-spacerun:yes'> </span>Simply changing the code to:</p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>if ( ver <b
+  style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'>&gt;=</i></b>
+  6.0 ) <o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>msg =
+  &quot;You're using a recent copy of Internet Explorer.&quot;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>else<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'><span style='mso-spacerun:yes'> </span>msg =
+  &quot;You should upgrade your copy of Internet Explorer.&quot;;</span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>fixes the issue and accommodates for any value greater than 6.0.<span
+  style='mso-spacerun:yes'> </span>By adding the &gt; operator, the code will
+  now be able to handle any future version values for IE.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Identifying application logic issues for server side applications
+  requires looking for similarly written conditional statements.<span
+  style='mso-spacerun:yes'> </span>Given the vast number of possible server
+  side application platforms and languages it is impractical to provide every
+  server side example in this document.<span style='mso-spacerun:yes'>
+  </span>Microsoft has published a best practices document for effectively
+  detecting Internet Explorer (covering both webpage and server side
+  application logic), which is located at <a
+  href="http://msdn2.microsoft.com/en-us/library/ms537509.aspx">http://msdn2.microsoft.com/en-us/library/ms537509.aspx</a>.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>: </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>My webpage loads and the content renders, but some of the
+  functionality (e.g. menus, buttons, rollovers, etc.) is not working.<span
+  style='mso-spacerun:yes'> </span>Is there something wrong with using IE7?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: This issue is
+  generally tied to browser identification logic errors within a webpage where
+  the JavaScript code is not designed to properly handle the version of
+  Internet Explorer you are using.<span style='mso-spacerun:yes'> </span>There
+  is nothing wrong with using IE7, nor is anything specifically wrong with the
+  web application.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Since the
+  webpage renders in the browser window, it appears the browser detection logic
+  is likely happening in some JavaScript within the HTML content.<span
+  style='mso-spacerun:yes'> </span>In order to view the HTML source for the
+  webpage (including the JavaScript programming code) simply right click in the
+  browser window and select View Source.<span style='mso-spacerun:yes'>
+  </span>In looking at the source code you should focus on content contained
+  within &lt;script&gt;&lt;/script&gt; tags, especially looking for JavaScript
+  variables that reference the <i style='mso-bidi-font-style:normal'>navigator</i>
+  object.<span style='mso-spacerun:yes'> </span>For example, you might see
+  JavaScript code like:</p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ver=navigator.appVersion;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.agent=navigator.userAgent;</span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing>These lines are working with elements of the Document
+  Object Model (DOM) that allow web developers to read information about the
+  user and take actions based on the results.<span style='mso-spacerun:yes'>
+  </span>If you do not see any <i style='mso-bidi-font-style:normal'>navigator</i>
+  object references in the webpage source code, you will need to find where the
+  source code is being referenced.<span style='mso-spacerun:yes'> </span>Some
+  web developers prefer to use externally sourced JavaScript files rather than
+  include all their code in one HTML page.<span style='mso-spacerun:yes'>
+  </span>For those situations you may need to load the URL indicated and open
+  that .js file in a text editor.<span style='mso-spacerun:yes'> </span>To
+  find those files you would need to search for HTML tags that look like:</p>
+  <p class=MsoNoSpacing><o:p>&nbsp;</o:p></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>&lt;script language=&quot;JavaScript1.2&quot; src=&quot;inc/mycode.js&quot;&gt;</span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing>Once you have found the JavaScript code relating to the
+  browser logic activity, you need to look for instances where the code
+  references versions of Internet Explorer.<span style='mso-spacerun:yes'>
+  </span>Specifically, you need to find any items where the web developer may
+  have limited the conditional operator to exclude new versions (or at least
+  those beyond Internet Explorer 6).<span style='mso-spacerun:yes'> </span>For
+  example, you may see code which looks like this:</p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie5=(this.ver.indexOf(&quot;MSIE 5&quot;)&gt;-1
+  &amp;&amp; this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie6=(this.ver.indexOf(&quot;MSIE 6&quot;)&gt;-1
+  &amp;&amp; this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie4=(document.all &amp;&amp; !this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie=this.ie4||this.ie5||this.ie6</span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing>You can see that this JavaScript code has conditions to
+  deal with versions up to 6, but in the case of IE 7 the code will simply exit
+  without returning a result.<span style='mso-spacerun:yes'> </span>Often this
+  type of exit condition will cause a webpage to render properly  there is
+  nothing wrong with the HTML or JavaScript code  but the functionality will
+  be broken and you will not be able to use the application.<span
+  style='mso-spacerun:yes'> </span>The fix for this situation is to modify the
+  JavaScript to include conditions which properly handle the IE 7 (and IE 8) version
+  string.<span style='mso-spacerun:yes'> </span>By modifying the code to look
+  like:</p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie5=(this.ver.indexOf(&quot;MSIE 5&quot;)&gt;-1
+  &amp;&amp; this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie6=(this.ver.indexOf(&quot;MSIE 6&quot;)&gt;-1
+  &amp;&amp; this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><b style='mso-bidi-font-weight:normal'><i
+  style='mso-bidi-font-style:normal'><span style='font-size:10.0pt;background:
+  silver;mso-highlight:silver'>this.ie7=(this.ver.indexOf(&quot;MSIE
+  7&quot;)&gt;-1 &amp;&amp; this.dom)?1:0;<o:p></o:p></span></i></b></p>
+  <p class=MsoNoSpacing><b style='mso-bidi-font-weight:normal'><i
+  style='mso-bidi-font-style:normal'><span style='font-size:10.0pt;background:
+  silver;mso-highlight:silver'>this.ie7=(this.ver.indexOf(&quot;MSIE
+  8&quot;)&gt;-1 &amp;&amp; this.dom)?1:0;<o:p></o:p></span></i></b></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie4=(document.all &amp;&amp; !this.dom)?1:0;<o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt;background:silver;
+  mso-highlight:silver'>this.ie=this.ie4||this.ie5||this.ie6<b
+  style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'>||this.ie7||this.ie8</i></b></span><span
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNoSpacing><span style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNoSpacing>You should immediately see the proper functionality
+  with IE 7 that you experienced with IE 6.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>: </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>I have too many applications to test in my organization, is there a
+  quick way I can test the User-Agent string issue without digging through any code?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: Yes, Microsoft recognized
+  the need to have a simple solution for broad based web application testing.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Microsoft offers
+  the User-Agent String Utility for system administrators, web developers,
+  application owners and any other users to quickly and easily modify their
+  browser settings to send the Internet Explorer 6 User-Agent string
+  values.<span style='mso-spacerun:yes'> </span>This tool, available at <a
+  href="http://www.microsoft.com/downloads/details.aspx?familyid=9517db9c-3c0d-47fe-bd04-fad82a9aac9f&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=9517db9c-3c0d-47fe-bd04-fad82a9aac9f&amp;displaylang=en</a>,
+  enables you to launch an instance of Internet Explorer 7 that will send the
+  modified User-Agent string (it will send the IE 6 UA String).<span
+  style='mso-spacerun:yes'> </span>You do not need to modify the system
+  registry or make any other system modifications to use this tool.<span
+  style='mso-spacerun:yes'> </span>It is meant as a diagnostic tool to help
+  you in evaluating deployment preparedness, and therefore does not permanently
+  change any system values.<span style='mso-spacerun:yes'> </span>If you find
+  the testing is successful when using this tool, but your web applications
+  fail to work properly when sending the Internet Explorer 7 User-Agent string,
+  Microsoft recommends that you modify any applications to properly accommodate
+  for the Internet Explorer 7 User-Agent string value.<span
+  style='mso-spacerun:yes'> </span>In the case of Commercial Off The Shelf
+  (COTS), Enterprise Resource Planning, or Customer Relationship Management
+  (CRM) software applications you should contact those vendors for availability
+  of any upgrades or patches to their applications.<b style='mso-bidi-font-weight:
+  normal'> <o:p></o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Microsoft does not recommend using this tool as an enterprise
+  deployment solution, it is meant for testing and diagnostic purposes
+  only.<span style='mso-spacerun:yes'> </span>See the <a
+  href="#RegistrySolution">registry based solution</a> for a suitable
+  enterprise deployment and distribution solution. </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><a name=RegistrySolution><b style='mso-bidi-font-weight:normal'>Question</b></a>:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='mso-spacerun:yes'></span>Ive checked out my
+  applications and they work if I set the User-Agent string to version 6, but I
+  need to deploy this to my entire organization (and the software
+  vendor/developer does not offer a patch or upgrade to their application).<span
+  style='mso-spacerun:yes'> </span>How do I change it on every machine?<span
+  style='mso-spacerun:yes'> </span>And will it break anything else?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: Making changes to
+  the web application code is the recommended solution, but there can be
+  logistical reasons that make it difficult or impossible.<span
+  style='mso-spacerun:yes'> </span>Sometimes the source code is not available
+  (in the case of server side applications) or exists in too many places (in
+  the case of embedded code in HTML pages) to be a viable solution in your
+  environment.<span style='mso-spacerun:yes'> </span>There are also many older
+  (legacy) applications used in an organization and some applications vendors
+  have chosen to only support the newest versions of their web based
+  applications, and upgrades are either impractical or impossible.<span
+  style='mso-spacerun:yes'> </span>To facilitate migrations to Internet
+  Explorer 7, you can modify system settings in the registry to force Internet
+  Explorer 7 to send the Internet Explorer 6 User-Agent string.<span
+  style='mso-spacerun:yes'> </span>Fortunately, making this change will only
+  skew the web statistic usage reports gathered by website administrators  it
+  will not break any functionality of Internet Explorer 7, nor will it reduce
+  any of the feature and security enhancements available to Internet Explorer 7
+  users.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: The registry key
+  is located at:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet
+  Settings\5.0\User Agent]</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Under that key you will need to make the following entry:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>&quot;Version&quot;=&quot;MSIE
+  6.0&quot;</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>These changes can be made using Active Directory configuration
+  changes or you can use login scripts to run a registry file file update for
+  installations that do not have AD infrastructures.<span
+  style='mso-spacerun:yes'> </span>The registry file needs to contain both of
+  the lines above and have a .reg extension for it to properly import to the
+  system registry.<span style='mso-spacerun:yes'> </span>This registry file is
+  supported on both Windows XP and Windows Vista.<span
+  style='mso-spacerun:yes'> </span>Administrator rights are required to
+  install registry files, or they can be deployed via login scripting.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Microsoft recommends using this registry fix as a temporary solution
+  while working to make your web applications compatible with a standard
+  installation of Internet Explorer 7.<span style='mso-spacerun:yes'>
+  </span>When your web applications and software vendors provide compatible
+  versions of their software, you can safely remove this registry modification
+  and not lose any functionality.</p>
+  </td>
+ </tr>
+</table>
+

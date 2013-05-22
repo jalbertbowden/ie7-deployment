@@ -1,0 +1,331 @@
+
+<h1><a name="_Toc194241898">Security Changes</a></h1>
+
+<p class=MsoNormal><span style='mso-tab-count:1'> </span>Internet
+Explorer 7 introduced many new security features and default configurations in
+order to enhance browser security increase user information safety.<span
+style='mso-spacerun:yes'> </span>Some of those changes affect the way in which
+Internet Explorer works and may cause issues for enterprise deployments. </p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:17.5pt'>
+  <td width=637 valign=top style='width:477.9pt;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt;height:17.5pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>: </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>With Internet Explorer 7 we get authentication failure or connection
+  failure errors when trying to access certain HTTPS sites.<span
+  style='mso-spacerun:yes'> </span>These sites worked fine before, does
+  Internet Explorer 7 not work with HTTPS sites?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: Internet Explorer
+  7 modified the default settings for HTTPS connections to remove default
+  support for SSL v2 certificates.<span style='mso-spacerun:yes'> </span>This
+  change was made in order to help increase the overall security of HTTPS
+  connections.<span style='mso-spacerun:yes'> </span>SSL v2 certificates do
+  not offer the same level of encryption as the current SSL v3 option, and
+  therefore it is not recommended to use SSL v2 for an encryption mechanism.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Microsoft
+  recognizes there are legacy applications which may use SSL v2 certificates,
+  so support for SSL v2 was not removed from the product entirely.<span
+  style='mso-spacerun:yes'> </span>It was disabled by default.<span
+  style='mso-spacerun:yes'> </span>The recommended solution for this issue is
+  to obtain new SSL v3 certificates for any older/legacy web servers and
+  applications that use SSL v2.<span style='mso-spacerun:yes'> </span>If that
+  is not possible, you can enable support for SSL v2 in the Advanced tab of
+  the Internet Options control panel:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span style='mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_27" o:spid="_x0000_i1027" type="#_x0000_t75" style='width:315pt;
+   height:259.5pt;visibility:visible'>
+   <v:imagedata src="ie7-tips-and-tricks_files/image005.emz" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=420 height=346
+  src="ie7-tips-and-tricks_files/image006.gif" v:shapes="Picture_x0020_27"><![endif]></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>There is no Group Policy Object setting to enable this feature.<span
+  style='mso-spacerun:yes'> </span>To enable it for your enterprise
+  deployments you would need to either:</p>
+  <p class=MsoListParagraphCxSpFirst style='margin-bottom:0in;margin-bottom:
+  .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
+  l2 level1 lfo4'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Use the Internet Explorer Administration Kit
+  (IEAK) 7 to build a custom Internet Explorer 7 package, and then deploy that
+  MSI package using your Software Management System (SMS) infrastructure (or
+  similar software delivery system).</p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
+  .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
+  l2 level1 lfo4'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Create a custom registry file to make this
+  change and deploy it via login scripts.<span style='mso-spacerun:yes'>
+  </span>The registry key is located at:</p>
+  <p class=MsoListParagraphCxSpLast style='margin-bottom:0in;margin-bottom:
+  .0001pt;mso-add-space:auto;line-height:normal'><span style='font-size:10.0pt;
+  background:silver;mso-highlight:silver'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:10.0pt;background:silver;mso-highlight:silver'>[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet
+  Settings\]</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>Under that key you
+  will need to create the <span style='background:silver;mso-highlight:silver'>SecureProtocols</span>
+  REG_DWORD entry with the flag options:</p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:1.25in;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:10.0pt;background:silver;mso-highlight:silver'>&quot;The
+  SSLv2 flag is 8 (0x008).<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:1.25in;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:10.0pt;background:silver;mso-highlight:silver'>The SSLv3
+  flag is 32 (0x020).<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:1.25in;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:10.0pt;background:silver;mso-highlight:silver'>The TLSv1
+  flag is 128 (0x080).<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:1.25in;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:10.0pt;background:silver;mso-highlight:silver'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>Hence, if all
+  protocols are enabled, the value is 0x0A8.&nbsp; The IE 7 default is 0xA0.</p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>These changes can
+  be made using Active Directory configuration changes or you can use login
+  scripts to run a registry file file update for installations that do not have
+  AD infrastructures.<span style='mso-spacerun:yes'> </span>The registry file
+  needs to contain both of the lines above and have a .reg extension for it to
+  properly import to the system registry.<span style='font-size:10.0pt;
+  background:silver;mso-highlight:silver'> </span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Why do we see Certificate Errors: Navigation Blocked page for sites
+  that used to work fine?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: Internet Explorer
+  7 modified the default security settings for HTTPS connections to increase
+  overall security in a number of instances.<span style='mso-spacerun:yes'>
+  </span>As a result of the new security default settings, IE 7 will block
+  users (by presenting a red-colored information page) in any of the following
+  instances when visiting an HTTPS site:</p>
+  <p class=MsoNoSpacing><o:p>&nbsp;</o:p></p>
+  <p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in;mso-list:
+  l7 level1 lfo6'><![if !supportLists]><span style='font-family:Symbol;
+  mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+  style='mso-list:Ignore'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Certificate was issued to a hostname other
+  than the current URLs hostname </p>
+  <p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in;mso-list:
+  l7 level1 lfo6'><![if !supportLists]><span style='font-family:Symbol;
+  mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+  style='mso-list:Ignore'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Certificate was issued by an untrusted root </p>
+  <p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in;mso-list:
+  l7 level1 lfo6'><![if !supportLists]><span style='font-family:Symbol;
+  mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+  style='mso-list:Ignore'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Certificate is expired </p>
+  <p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in;mso-list:
+  l7 level1 lfo6'><![if !supportLists]><span style='font-family:Symbol;
+  mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+  style='mso-list:Ignore'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]>Certificate is revoked</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Microsoft
+  recognizes there are legacy applications which may utilize older or
+  internally issued certificates that now trigger the new warning page.<span
+  style='mso-spacerun:yes'> </span>The intent of this change was to increase
+  security and protect users from online threats.<span
+  style='mso-spacerun:yes'> </span>Microsoft recommends upgrading HTTPS sites
+  to meet the newer level of security and validation checking.<span
+  style='mso-spacerun:yes'> </span>To accommodate for those scenarios where
+  that is not practical, you are able to modify the default settings in your
+  deployment.<span style='mso-spacerun:yes'> </span>In addition, certain
+  situations, such as allowing the use of expired or revoked certificate should
+  never be over-ridden.<span style='mso-spacerun:yes'> </span>Doing so is
+  likely to create a reduction in user and system security.<span
+  style='mso-spacerun:yes'> </span>Microsoft also strongly advises against
+  modifying the default settings regarding certificate address mismatch.<span
+  style='mso-spacerun:yes'> </span>Disabling this change may expose your users
+  to improperly configured systems on the Internet, and may result in
+  compromised security of the machine.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><br>
+  A frequent scenario is users being blocked by default by the use of
+  internally issued certificates for intranet sites (untrusted root issue).<span
+  style='mso-spacerun:yes'> </span>To resolve that error you should use Group
+  Policy to deploy the internal root certificate used by your
+  organization.<span style='mso-spacerun:yes'> </span>You can also use the
+  Certificate Manager Tool (information at <a
+  href="http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx</a>,
+  but the tool is included in Visual Studio) to build a login script to
+  manually install the custom root certificate.<span style='mso-spacerun:yes'>
+  </span>That certificate will be stored in the local machine certificate
+  store, not as a part of Internet Explorer.<span style='mso-spacerun:yes'>
+  </span>More information on working with the certificate store, and how to add
+  your own certificates, can be found at <a
+  href="http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true">http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true</a>.
+  </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>We have users locked-down as standard users.<span
+  style='mso-spacerun:yes'> </span>Before Internet Explorer 7 our support
+  staff could use the Run As option to access Windows Explorer as an admin
+  and perform necessary tasks (e.g. installing software).<span
+  style='mso-spacerun:yes'> </span>With Internet Explorer 7 we are no longer
+  able to use that option.<span style='mso-spacerun:yes'> </span>Is something
+  wrong with our configuration?</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: No, this change was
+  made to help increase the overall security of Internet Explorer and protect
+  users against online threats.<span style='mso-spacerun:yes'> </span>The
+  issue is related to the process separation of Windows Explorer and Internet
+  Explorer.<span style='mso-spacerun:yes'> </span>Prior to the release of
+  Internet Explorer 7, those two processes were linked and support staff/system
+  administrators were able to use that link in order to open a Windows Explorer
+  window (by entering a local file system location in the address bar) with
+  administrative credentials.<span style='mso-spacerun:yes'> </span>Now that
+  we have separated those two processes, this option is no longer
+  possible.<span style='mso-spacerun:yes'> </span>Attempting to use the Run
+  As option to launch Internet Explorer 7 will perform as expected and launch
+  the process with administrative privileges.<span style='mso-spacerun:yes'>
+  </span>When the administrator enters a local file system location in the
+  Internet Explorer 7 address bar, the separate Windows Explorer process is
+  called  and it launches with the logged in user credentials. </p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: Since this
+  change was made by design to increase security, there is no way to disable
+  this setting or simple workaround.<span style='mso-spacerun:yes'> </span>It
+  was intended to create a barrier between the two processes and isolate
+  Windows Explorer from potential external compromise.<span
+  style='mso-spacerun:yes'> </span>The only way to access the local file
+  system with administrator level credentials would be to logon to the local
+  machine directly to perform the necessary tasks.<span
+  style='mso-spacerun:yes'> </span>In the case of remote support, Microsoft
+  recommends using Remote Desktop Connections in order to login with the proper
+  credentials required to perform the required task.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
+  <h1 style='line-height:normal'><a name="_Toc194241899"><span
+  style='font-size:11.0pt;mso-bidi-font-size:14.0pt;font-family:"Calibri","sans-serif";
+  color:windowtext;font-weight:normal;mso-bidi-font-weight:bold'>Were using
+  Internet Explorer 7 and having issues on Windows Vista with some legacy
+  applications that read and write to the local file system.<span
+  style='mso-spacerun:yes'> </span>Why cant it read and write the files
+  properly?<span style='mso-spacerun:yes'> </span>Is there something different
+  about Internet Explorer 7 on Windows XP?</span></a><span style='font-size:
+  11.0pt;mso-bidi-font-size:14.0pt;font-family:"Calibri","sans-serif";
+  color:windowtext;font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></h1>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: The main
+  difference between Internet Explorer 7 on Windows XP and Windows Vista is
+  that Windows Vista offers an additional security protection to help prevent
+  unintentional system access by malicious software or other parties.<span
+  style='mso-spacerun:yes'> </span>This feature is known as Protected Mode,
+  and helps protect users and systems by restricting the ability of the
+  Internet Explorer process from reading and writing to critical areas of the
+  file system.<span style='mso-spacerun:yes'> </span>Protected Mode allows
+  reading and writing from the user hive area of the file system, but
+  prohibits activity to areas outside that perimeter.<span
+  style='mso-spacerun:yes'> </span>In making this change, some applications
+  fail to work properly as they are attempting to read and write from
+  restricted areas.<span style='mso-spacerun:yes'> </span>Protected Mode does
+  make an effort to assist improperly written applications by virtualizing
+  data reads and writes from the file system, however this should not be used
+  as a remediation option for Protected Mode issues.<span
+  style='mso-spacerun:yes'> </span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: To resolve
+  issues with Protected Mode application compatibility problems, customers are
+  encouraged to rewrite the application (or extensions) to be Protected Mode
+  aware.<span style='mso-spacerun:yes'> </span>Resource information about
+  working with Protected Mode is available at <a
+  href="http://msdn2.microsoft.com/en-us/library/bb250462.aspx">http://msdn2.microsoft.com/en-us/library/bb250462.aspx</a>.<span
+  style='mso-spacerun:yes'> </span>In addition, the document at <a
+  href="http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx">http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx</a>
+  on security and compatibility issues in Internet Explorer 7 will provide
+  information about how to use the <a href="#ACT">Application Compatibility
+  Toolkit</a> to diagnose specific compatibility issues with Protected Mode
+  problems.</p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>Microsoft does not recommend disabling Protected Mode as a solution
+  to application compatibility.<span style='mso-spacerun:yes'> </span>Removing
+  this security mechanism may expose users and computers to unnecessary system
+  compromise, loss of resources or unwanted installation of software.</p>
+  </td>
+ </tr>
+</table>
+
