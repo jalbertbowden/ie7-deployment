@@ -1,27 +1,6 @@
 
 <h1><a name="_Toc194241896">ActiveX Controls</a></h1>
-
-<p class=MsoNormal><span style='mso-tab-count:1'> </span>Internet
-Explorer 7 introduced a new feature designed to help prevent users from being
-potentially and unknowingly exposed to malicious attacks.<span
-style='mso-spacerun:yes'> </span>Internet Explorer has long offered web
-developers the ability to build custom components and extensibility solutions
-using the ActiveX platform.<span style='mso-spacerun:yes'> </span>As with any extensibility
-model, the more you allow people to do and the more you expose the users
-system, the more potential for abuse.<span style='mso-spacerun:yes'> </span>To
-counter that potential issue, IE7 introduced the ActiveX opt-in feature, which
-disables all previously unused controls by default.<span
-style='mso-spacerun:yes'> </span>This helps in both case of upgrades and new
-installs, since ActiveX opt-in protects the user against controls that are
-installed along with non-web enabled applications.<span
-style='mso-spacerun:yes'> </span>Prior to IE 7, those controls would be
-exposed to the Internet by default.<span style='mso-spacerun:yes'> </span>Now
-the user is protected, and must give their approval before the control can be
-invoked.<span style='mso-spacerun:yes'> </span>Any ActiveX control installed
-on the system must be on the approved list before it can be instantiated in the
-browser.<span style='mso-spacerun:yes'> </span>A control which has never been
-used before (or previously called but not approved) will trigger IE7 to display
-the information bar to prompt the user to approve the control.</p>
+<p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
@@ -40,13 +19,13 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: One of the
   security improvements made in Internet Explorer 7 is the addition of a
-  feature called ActiveX Opt-In.<span style='mso-spacerun:yes'> </span>The
+  feature called ActiveX Opt-In. The
   purpose of this feature was to restrict the use of ActiveX controls within
   Internet Explorer to those specifically intended by the user (or
-  administrator).<span style='mso-spacerun:yes'> </span>Unlike previous
+  administrator). Unlike previous
   versions of Internet Explorer, users will now be prompted to run an ActiveX
-  control if they have never used it before.<span style='mso-spacerun:yes'>
-  </span>Once approved, the user will never be prompted again for that specific
+  control if they have never used it before.
+  Once approved, the user will never be prompted again for that specific
   control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
@@ -55,10 +34,10 @@ the information bar to prompt the user to approve the control.</p>
   this issue and provide for system stability and security in your enterprise,
   Microsoft recommends you create an internal list of approved ActiveX controls
   (both public and private in the case of internally created ActiveX
-  controls).<span style='mso-spacerun:yes'> </span>Centrally managing this
+  controls). Centrally managing this
   list of approved controls will help ensure users are not blocked from certain
   actions and need helpdesk support to install/approve ActiveX controls for
-  locked down systems.<span style='mso-spacerun:yes'> </span>The Group Policy
+  locked down systems. The Group Policy
   setting is found at:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
@@ -66,13 +45,13 @@ the information bar to prompt the user to approve the control.</p>
   normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
   Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
   Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt;
-  Add-on List</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  Add-on List<span style='font-size:10.0pt'><o:p></o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Enter all approved ActiveX controls (listed by CLSID) in this object
-  container.<span style='mso-spacerun:yes'> </span>You need to enter two
-  items, Name and Value.<span style='mso-spacerun:yes'> </span>The Name is the
+  container. You need to enter two
+  items, Name and Value. The Name is the
   CLSID and the Value needs to be one of:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
@@ -108,7 +87,7 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Once this list is complete, you can use Group Policy to create and
   propagate the approved list to systems in your AD domain.<span
-  style='mso-spacerun:yes'> </span>If you want to lock down this list of
+  style='mso-spacerun:yes'> If you want to lock down this list of
   controls to only those you have approved for your organization, enable the
   Group Policy Setting at:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -117,7 +96,7 @@ the information bar to prompt the user to approve the control.</p>
   normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
   Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
   Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny
-  all add-ons unless specifically allowed in the Add-on list</span></p>
+  all add-ons unless specifically allowed in the Add-on list</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -130,12 +109,12 @@ the information bar to prompt the user to approve the control.</p>
   normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
   Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
   Internet Explorer -&gt; Security Features -&gt; Information Bar -&gt;
-  Internet Explorer Processes</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  Internet Explorer Processes<span style='font-size:10.0pt'><o:p></o:p></p>
   </td>
  </tr>
 </table>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<p><o:p>&nbsp;</o:p></p>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
@@ -149,19 +128,19 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Internet Explorer 7 is blocking users from running critical ActiveX
   controls so they cant use our web applications.<span
-  style='mso-spacerun:yes'> </span>How can I unblock those controls?</p>
+  style='mso-spacerun:yes'> How can I unblock those controls?</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: By default,
   Internet Explorer 7 is designed to block all previously unused ActiveX
-  controls.<span style='mso-spacerun:yes'> </span>This change was made to
+  controls. This change was made to
   increase overall security and limit potential system exposure due to ActiveX
   controls that were never intended to be exposed to the Internet.<span
-  style='mso-spacerun:yes'> </span>Certain well known and tested ActiveX
+  style='mso-spacerun:yes'> Certain well known and tested ActiveX
   controls are pre-approved and will not prompt users even if they have never
-  previously used the ActiveX control.<span style='mso-spacerun:yes'>
-  </span>More information about the ActiveX Opt-In feature can be found at <a
+  previously used the ActiveX control.
+  More information about the ActiveX Opt-In feature can be found at <a
   href="http://msdn2.microsoft.com/en-us/library/bb250471.aspx">http://msdn2.microsoft.com/en-us/library/bb250471.aspx</a>.
   </p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -169,21 +148,21 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: You can use
   Group Policy to specifically approve certain controls, and/or block all but
-  those approved for your organization.<span style='mso-spacerun:yes'>
-  </span>The Group Policy setting for managing the list is found at:</p>
+  those approved for your organization.
+  The Group Policy setting for managing the list is found at:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
   Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
   Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt;
-  Add-on List</span><span style='font-size:10.0pt'><o:p></o:p></span></p>
+  Add-on List<span style='font-size:10.0pt'><o:p></o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Once your list is complete, you can use Group Policy to create and
   propagate the approved list to systems in your AD domain.<span
-  style='mso-spacerun:yes'> </span>If you want to lock down this list of
+  style='mso-spacerun:yes'> If you want to lock down this list of
   controls to only those you have approved for your organization, enable the
   Group Policy Setting at:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -192,21 +171,21 @@ the information bar to prompt the user to approve the control.</p>
   normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
   Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
   Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny
-  all add-ons unless specifically allowed in the Add-on list</span></p>
+  all add-ons unless specifically allowed in the Add-on list</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>In addition, users running Internet Explorer 7 on Windows Vista can
   take advantage of the ActiveX Installation Service to install pre-approved
   controls without the need for administrator privileges.<span
-  style='mso-spacerun:yes'> </span>More information about the ActiveX
+  style='mso-spacerun:yes'> More information about the ActiveX
   Installation Service can be found at <a
   href="http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx">http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx</a>.</p>
   </td>
  </tr>
 </table>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<p><o:p>&nbsp;</o:p></p>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
@@ -233,17 +212,17 @@ the information bar to prompt the user to approve the control.</p>
   normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: At this time we
   are working directly with many of the top add-on software vendors to make
   their ActiveX controls available in 64 bit versions, but most have not yet
-  made version of their applications available.<span style='mso-spacerun:yes'>
-  </span>Until they make their software available, you would need to run
+  made version of their applications available.
+  Until they make their software available, you would need to run
   Internet Explorer in 32 bit mode in order to access sites which use those
-  controls.<span style='mso-spacerun:yes'> </span>For browsing sites that do
+  controls. For browsing sites that do
   not use those controls you can continue to run the standard 64 bit version
   and take advantage of the increased speed and performance of that version.</p>
   </td>
  </tr>
 </table>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<p><o:p>&nbsp;</o:p></p>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
@@ -256,32 +235,32 @@ the information bar to prompt the user to approve the control.</p>
   normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>We are testing Internet Explorer 7 on both Windows Vista and Windows
-  XP SP2.<span style='mso-spacerun:yes'> </span>We get a red X icon when
+  XP SP2. We get a red X icon when
   trying to use Outlook Web Access with Internet Explorer 7 on Windows Vista,
-  but Windows XP SP 2 works fine.<span style='mso-spacerun:yes'> </span>Whats
+  but Windows XP SP 2 works fine. Whats
   wrong with Windows Vista?</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: There is nothing
   wrong with Windows Vista, or Internet Explorer 7.<span
-  style='mso-spacerun:yes'> </span>Among many of the changes made in Windows
+  style='mso-spacerun:yes'> Among many of the changes made in Windows
   Vista, the DHTML editing control was deprecated.<span
-  style='mso-spacerun:yes'> </span>In that process, any websites which made
+  style='mso-spacerun:yes'> In that process, any websites which made
   use of the control will no longer be able to access it.<span
-  style='mso-spacerun:yes'> </span>Outlook Web Access is one popular application
+  style='mso-spacerun:yes'> Outlook Web Access is one popular application
   that used the DHTML control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: For Windows
   Vista users the only solution is to modify the control which the web
-  application is attempting to use.<span style='mso-spacerun:yes'> </span>The
+  application is attempting to use. The
   Exchange Server team issued a patch (Knowledge Base article 911829 <a
   href="http://support.microsoft.com/kb/911829">http://support.microsoft.com/kb/911829</a>
-  ) to resolve this issue.<span style='mso-spacerun:yes'> </span>Applying this
+  ) to resolve this issue. Applying this
   patch will resolve the issue and restore proper functionality for all
-  users.<span style='mso-spacerun:yes'> </span>You will need to contact your
+  users. You will need to contact your
   other software vendors to inquire about and obtain their software fixes if
   they use this deprecated control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -289,14 +268,14 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Be advised this control was deprecated for security purposes and
   Microsoft recommends it should not be installed on Windows Vista machines as
-  a workaround to this issue.<span style='mso-spacerun:yes'> </span>The only
+  a workaround to this issue. The only
   recommended workaround is to install the Exchange Server patch, there is no
   client side fix for this issue.</p>
   </td>
  </tr>
 </table>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<p><o:p>&nbsp;</o:p></p>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
  style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
@@ -310,14 +289,14 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'>Our systems create PDF documents and we keep having issues loading a
   document, closing the tab and opening a new document.<span
-  style='mso-spacerun:yes'> </span>After we close the first one, we keep
-  getting blank pages.<span style='mso-spacerun:yes'> </span>Whats wrong with
+  style='mso-spacerun:yes'> After we close the first one, we keep
+  getting blank pages. Whats wrong with
   our installation?</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: There is nothing
-  wrong with your installation.<span style='mso-spacerun:yes'> </span>We are
+  wrong with your installation. We are
   aware of this issue being reported by some users, and are working with Adobe
   to provide an updated ActiveX control to resolve the issue.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -325,15 +304,15 @@ the information bar to prompt the user to approve the control.</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: The issue
   appears to be caused when the Adobe Acrobat ActiveX control fails to properly
-  register and react to a tab close event.<span style='mso-spacerun:yes'>
-  </span>The currently available control was written before Internet Explorer
+  register and react to a tab close event.
+  The currently available control was written before Internet Explorer
   supported a tab browsing interface, so the control is expecting to close
   along with the connected iexplore.exe process.<span
-  style='mso-spacerun:yes'> </span>If any tabs remain open when the tab with
+  style='mso-spacerun:yes'> If any tabs remain open when the tab with
   PDF document closes, the Adobe Acrobat process AcroRd32.exe remains running.<span
-  style='mso-spacerun:yes'> </span>Since the process is not properly terminated,
+  style='mso-spacerun:yes'> Since the process is not properly terminated,
   it will not launch again for the next PDF document load request.<span
-  style='mso-spacerun:yes'> </span>There are two options for workarounds until
+  style='mso-spacerun:yes'> There are two options for workarounds until
   Adobe provides an updated client solution:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
@@ -341,36 +320,36 @@ the information bar to prompt the user to approve the control.</p>
   .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
   l0 level1 lfo3'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
   style='mso-list:Ignore'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span></span></span><![endif]>When users encounter issues with loading PDF
+  <![endif]>When users encounter issues with loading PDF
   documents and only see a blank page, they can manually terminate the
-  AcroRd32.exe process.<span style='mso-spacerun:yes'> </span>Once the
+  AcroRd32.exe process. Once the
   process is terminated they need to re-access the desired page/report and
   Adobe Acrobat should load properly.</p>
   <p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
   .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
   l0 level1 lfo3'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
   style='mso-list:Ignore'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span></span></span><![endif]>Open any PDF documents in a new window.</p>
+  <![endif]>Open any PDF documents in a new window.</p>
   <p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
   margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
   text-indent:-.25in;line-height:normal;mso-list:l0 level2 lfo3'><![if !supportLists]><span
   style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>a.<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>This
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <![endif]>This
   can be done programmatically by modifying your web application to force a new
-  window for each PDF document.<span style='mso-spacerun:yes'> </span>Using
+  window for each PDF document. Using
   the JavaScript window.open command is one solution. </p>
   <p class=MsoListParagraphCxSpLast style='margin-top:0in;margin-right:0in;
   margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
   text-indent:-.25in;line-height:normal;mso-list:l0 level2 lfo3'><![if !supportLists]><span
   style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>b.<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Users
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <![endif]>Users
   can manually force this type of action by holding down the SHIFT key when
   clicking on a PDF document link (or report generation link).<span
-  style='mso-spacerun:yes'> </span>An alternative technique would be to right
+  style='mso-spacerun:yes'> An alternative technique would be to right
   click, then select Open in New Window.</p>
   </td>
  </tr>
 </table>
 
-<p class=MsoNormal><a name=CSS><o:p>&nbsp;</o:p></a></p>
+<p><a name=CSS><o:p>&nbsp;</o:p></a></p>
 
