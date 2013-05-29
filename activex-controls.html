@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>IE7 Common Deployment Issues: Tips and Tricks</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header role="banner"></header>
+      <div class="main" role="main">
+        <article role="article">
+          <section role="region">
+            <h1><abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
 
 <h1><a name="_Toc194241896">ActiveX Controls</a></h1>
 <p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
@@ -350,6 +365,9 @@
   </td>
  </tr>
 </table>
-
-<p><a name=CSS><o:p>&nbsp;</o:p></a></p>
-
+          </section></article>
+        </div>
+      <footer></footer>
+    </div>
+  </body>
+</html>
