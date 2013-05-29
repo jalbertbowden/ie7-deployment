@@ -1,81 +1,94 @@
-
-<h1><a name="_Toc194241897">Cascading Style Sheets</a></h1>
-<p>One major area of improvements in Internet Explorer 7 is better adoption and adherence to web standards. As a result of those changes, some web design layouts no longer appear to render properly. Many of the required workarounds for previous versions of Internet Explorer are no longer needed, enabling web designers to spend less time on browser customization and more time on the actual design elements.</p>
-<div class="qabox">
-<p class="qap"><strong>Question</strong>: In testing with Internet Explorer 7, our pages dont render (layout) properly. Why do things look so funny (or why are things in the wrong place)?</p>
-
-
-
-<p class="qap"><strong>Answer</strong>: Internet Explorer 7 introduced many standards compatibility improvements to help web designers and developers create common experiences across platforms. Prior versions of Internet Explorer did not properly interpret certain aspects of the HTML DOM and W3C specifications. As a result, web designers and developers devised certain hacks specifically for Internet Explorer users to ensure proper layout. With the development work made in Internet Explorer 7 most of those modifications are no longer necessary. Further, Internet Explorer 7 attempts to render (layout) the CSS source material as written, causing unexpected visual outcomes.</p>
-
-
-
-<p class="qap"><strong>Solution</strong>: The work performed in development of Internet Explorer 7 focused heavily on fixing most of the well known problems including:</p>
-<ul>
-  <li>Expanding Box Problem</li>
-  <li>Three Pixel Jog</li>
-  <li>Double Float-Margin</li>
-  <li>Unscrollable Content</li>
-</ul>
-<p class="qap">More information on Internet Explorer 7 CSS changes and workarounds can be found at <a href="http://msdn2.microsoft.com/en-us/library/bb250496.aspx">http://msdn2.microsoft.com/en-us/library/bb250496.aspx</a>. The Application Compatibility Toolkit (available at <a href="http://technet.microsoft.com/en-us/windowsvista/aa905078.aspx">http://technet.microsoft.com/en-us/windowsvista/aa905078.aspx</a>) enables you to browse sites and view compatibility issues in real time. Compatibility issues are logged and contain information about the type of error and information about behavior changes with Internet Explorer 7, as well as suggestions for necessary changes to avoid compatibility issues. This document also contains more information about the <a href="act-application-compatibility-toolkit.html">Application Compatibility Toolkit</a> and Internet Explorer 7.</p>
-</div>
-<div class="qabox">
-<p class="qap"><strong>Question</strong>: Many of our critical internal websites dont work/look right, or the hyperlink areas arent where we expect them to be. What is causing this?</p>
-<p class="qap"><strong>Answer</strong>: This could be in part due to CSS and User-Agent string changes made in Internet Explorer 7. Application servers or HTML code could be improperly rendered in Internet Explorer 7 if the application logic is not properly handling the User-Agent string setting. More information on that issue can be found <a href="#UserAgentStringIssues">here</a>.  If the User-Agent string issue is not the problem, the issue may be related to standards compatibility improvements made in Internet Explorer 7. Many of the CSS related enhancements made in Internet Explorer 7 no longer require the use of CSS hacks that were needed to properly render content in previous versions.</p>
-<p class="qap"><strong>Solution</strong>: Microsoft believes strongly in the need for application compatibility for our users and enterprise customers. It is essential to help ensure legacy applications continue to function as routinely as possible, while continuing to advance browser capabilities. Microsoft implemented two solutions, to help address this issue:</p>
-<p class="qap">Conditional Comments</p>
-<p class="qap"><a href="#DoctypeIssues">Document Declaration Type (DOCTYPE) modes</a> [see next section]</p>
-<p class="qap">Conditional Comments allow web designers and developers to add code in their HTML content that will only be read (and rendered) by Internet Explorer browsers. For example:</p>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>IE7 Common Deployment Issues: Tips and Tricks</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header role="banner"></header>
+      <div class="main" role="main">
+        <article role="article">
+          <section role="region">
+            <h1><a id="css">Cascading Style Sheets</a></h1>
+              <p>One major area of improvements in Internet Explorer 7 is better adoption and adherence to web standards. As a result of those changes, some web design layouts no longer appear to render properly. Many of the required workarounds for previous versions of Internet Explorer are no longer needed, enabling web designers to spend less time on browser customization and more time on the actual design elements.</p>
+              <div class="qabox">
+                <p class="qap"><strong>Question</strong>: In testing with Internet Explorer 7, our pages dont render (layout) properly. Why do things look so funny (or why are things in the wrong place)?</p>
+                <p class="qap"><strong>Answer</strong>: Internet Explorer 7 introduced many standards compatibility improvements to help web designers and developers create common experiences across platforms. Prior versions of Internet Explorer did not properly interpret certain aspects of the HTML DOM and W3C specifications. As a result, web designers and developers devised certain hacks specifically for Internet Explorer users to ensure proper layout. With the development work made in Internet Explorer 7 most of those modifications are no longer necessary. Further, Internet Explorer 7 attempts to render (layout) the CSS source material as written, causing unexpected visual outcomes.</p>
+                <p class="qap"><strong>Solution</strong>: The work performed in development of Internet Explorer 7 focused heavily on fixing most of the well known problems including:</p>
+                <ul>
+                  <li>Expanding Box Problem</li>
+                  <li>Three Pixel Jog</li>
+                  <li>Double Float-Margin</li>
+                  <li>Unscrollable Content</li>
+                </ul>
+                <p class="qap">More information on Internet Explorer 7 CSS changes and workarounds can be found at <a href="http://msdn2.microsoft.com/en-us/library/bb250496.aspx">http://msdn2.microsoft.com/en-us/library/bb250496.aspx</a>. The Application Compatibility Toolkit (available at <a href="http://technet.microsoft.com/en-us/windowsvista/aa905078.aspx">http://technet.microsoft.com/en-us/windowsvista/aa905078.aspx</a>) enables you to browse sites and view compatibility issues in real time. Compatibility issues are logged and contain information about the type of error and information about behavior changes with Internet Explorer 7, as well as suggestions for necessary changes to avoid compatibility issues. This document also contains more information about the <a href="act-application-compatibility-toolkit.html">Application Compatibility Toolkit</a> and Internet Explorer 7.</p>
+              </div>
+              <div class="qabox">
+                <p class="qap"><strong>Question</strong>: Many of our critical internal websites dont work/look right, or the hyperlink areas arent where we expect them to be. What is causing this?</p>
+                <p class="qap"><strong>Answer</strong>: This could be in part due to CSS and User-Agent string changes made in Internet Explorer 7. Application servers or HTML code could be improperly rendered in Internet Explorer 7 if the application logic is not properly handling the User-Agent string setting. More information on that issue can be found <a href="#UserAgentStringIssues">here</a>.  If the User-Agent string issue is not the problem, the issue may be related to standards compatibility improvements made in Internet Explorer 7. Many of the CSS related enhancements made in Internet Explorer 7 no longer require the use of CSS hacks that were needed to properly render content in previous versions.</p>
+                <p class="qap"><strong>Solution</strong>: Microsoft believes strongly in the need for application compatibility for our users and enterprise customers. It is essential to help ensure legacy applications continue to function as routinely as possible, while continuing to advance browser capabilities. Microsoft implemented two solutions, to help address this issue:</p>
+                <p class="qap">Conditional Comments</p>
+                <p class="qap"><a href="#DoctypeIssues">Document Declaration Type (DOCTYPE) modes</a> [see next section]</p>
+                <p class="qap">Conditional Comments allow web designers and developers to add code in their HTML content that will only be read (and rendered) by Internet Explorer browsers. For example:</p>
 <pre><code>
 &lt;![if IE]&gt;
 SOME
 HTML CODE
 &lt;![endif]&gt;
 </code></pre>
-<p class="qap">In addition, Conditional Comments support browser version numbering, so you are able to define precise formatting controls for a specific browser target. For example:</p>
-<h2><i>Internet Explorer 6 only comment:</i></h2>
+                <p class="qap">In addition, Conditional Comments support browser version numbering, so you are able to define precise formatting controls for a specific browser target. For example:</p>
+                <h2><i>Internet Explorer 6 only comment:</i></h2>
 <pre><code>
 &lt;! [if IE 6]&gt;
 SOME HTML CODE
 &lt;![endif]&gt;
 </code></pre>
-<h2><i>Internet Explorer 7 only comment:</i></h2>
+                <h2><i>Internet Explorer 7 only comment:</i></h2>
 <pre><code>
 &lt;![if IE 7]&gt;
 SOME HTML CODE
 &lt;![endif]&gt;
 </code></pre>
-<p class="qap">To resolve some layout issues, you should examine HTML code for the use of Conditional Comments, looking for anything which does not identify a specific Internet Explorer version. If you find the use of untargeted comments, you can modify the Conditional Comment to exclude Internet Explorer 7 and re-test the page. To modify a Conditional Comment to exclude Internet Explorer 7 (and future versions), the comment would need to appear as:</p>
+                <p class="qap">To resolve some layout issues, you should examine HTML code for the use of Conditional Comments, looking for anything which does not identify a specific Internet Explorer version. If you find the use of untargeted comments, you can modify the Conditional Comment to exclude Internet Explorer 7 and re-test the page. To modify a Conditional Comment to exclude Internet Explorer 7 (and future versions), the comment would need to appear as:</p>
 <pre><code>
 &lt;![if lte IE 7]&gt;
 SOME HTML CODE
 &lt;![endif]&gt;
 </code></pre>
-<p class="qap">More information and details on Conditional Comments can be found at <a href="http://msdn2.microsoft.com/en-us/library/ms537512.aspx">http://msdn2.microsoft.com/en-us/library/ms537512.aspx</a>.</p>
-<p class="qap">For information about DOCTYPE issues, <a href="#DoctypeIssues">see this section</a>.</p>
-</div>
-<div class="qabox">
-<p class="qap"><strong>Question</strong>: Were having layout issues with Internet Explorer 7 and Ive heard about the CSS changes and different DOCTYPE modes (quirks and standard).  What do these modes mean to me?</p>
-<p class="qap"><strong>Answer</strong>: To help ensure application compatibility across versions, Internet Explorer utilizes the DOCTYPE mode to define a set of rules by which to render a webpage. More information and details on DOCTYPE and how to set the modes for Internet Explorer can be found at <a href="http://msdn2.microsoft.com/en-us/library/ms535242.aspx">http://msdn2.microsoft.com/en-us/library/ms535242.aspx</a>. Internet Explorer supports both quirks and standards modes as defined by the DOCTYPE declared in the HTML source. In quirks mode, Internet Explorer 7 has been designed to ensure compatibility so that existing content continues to render as it did in previous versions of Internet Explorer. By contrast, in standards mode Internet Explorer 7 is designed to work towards improved conformance with W3C recommendations, which may include changes that impact existing content.</p>
-<p class="qap"><strong>Solution</strong>: Microsoft continues to make investments for better adherence to web design standards, and recommends using standards mode wherever possible. By using standards mode, your applications will be better designed to work properly with future versions of Internet Explorer. As a last resort for application compatibility issues, you should select the DOCTYPE options that work best for your environment. </p>
-</div>
-<div class="qabox">
-<p class="qap"><strong>Question</strong>: Our layout issues are resolved if we use the quirks mode DOCTYPE. Can we force Internet Explorer 7 to always use quirks mode?</p>
-<p class="qap"><strong>Answer</strong>: No. Unfortunately, the design of the DOCTYPE modes are made such that the browser receives the DOCTYPE information in the HTML payload from the server and renders based on that information. There is no mechanism to force Internet Explorer 7 (or any version) to ignore the DOCTYPE mode information.</p>
-<p class="qap"><strong>Solution</strong>: While there is no way to modify Internet Explorer 7 settings to always use the quirks mode DOCTYPE, it may be possible to modify your web applications to always specify the use of quirks mode. This is accomplished by modifying web server configurations to inject the following header in all HTML content:</p>
+                <p class="qap">More information and details on Conditional Comments can be found at <a href="http://msdn2.microsoft.com/en-us/library/ms537512.aspx">http://msdn2.microsoft.com/en-us/library/ms537512.aspx</a>.</p>
+                <p class="qap">For information about DOCTYPE issues, <a href="#DoctypeIssues">see this section</a>.</p>
+              </div>
+              <div class="qabox">
+                <p class="qap"><strong>Question</strong>: Were having layout issues with Internet Explorer 7 and Ive heard about the CSS changes and different DOCTYPE modes (quirks and standard).  What do these modes mean to me?</p>
+                <p class="qap"><strong>Answer</strong>: To help ensure application compatibility across versions, Internet Explorer utilizes the DOCTYPE mode to define a set of rules by which to render a webpage. More information and details on DOCTYPE and how to set the modes for Internet Explorer can be found at <a href="http://msdn2.microsoft.com/en-us/library/ms535242.aspx">http://msdn2.microsoft.com/en-us/library/ms535242.aspx</a>. Internet Explorer supports both quirks and standards modes as defined by the DOCTYPE declared in the HTML source. In quirks mode, Internet Explorer 7 has been designed to ensure compatibility so that existing content continues to render as it did in previous versions of Internet Explorer. By contrast, in standards mode Internet Explorer 7 is designed to work towards improved conformance with W3C recommendations, which may include changes that impact existing content.</p>
+                <p class="qap"><strong>Solution</strong>: Microsoft continues to make investments for better adherence to web design standards, and recommends using standards mode wherever possible. By using standards mode, your applications will be better designed to work properly with future versions of Internet Explorer. As a last resort for application compatibility issues, you should select the DOCTYPE options that work best for your environment. </p>
+              </div>
+              <div class="qabox">
+                <p class="qap"><strong>Question</strong>: Our layout issues are resolved if we use the quirks mode DOCTYPE. Can we force Internet Explorer 7 to always use quirks mode?</p>
+                <p class="qap"><strong>Answer</strong>: No. Unfortunately, the design of the DOCTYPE modes are made such that the browser receives the DOCTYPE information in the HTML payload from the server and renders based on that information. There is no mechanism to force Internet Explorer 7 (or any version) to ignore the DOCTYPE mode information.</p>
+                <p class="qap"><strong>Solution</strong>: While there is no way to modify Internet Explorer 7 settings to always use the quirks mode DOCTYPE, it may be possible to modify your web applications to always specify the use of quirks mode. This is accomplished by modifying web server configurations to inject the following header in all HTML content:</p>
 <pre><code>
 &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
 </code></pre>
-<p class="qap">Using this DOCTYPE will force Internet Explorer to use quirks mode to render pages, maintaining the expected content display.</p>
-<p class="qap">If your pages already contain DOCTYPE declarations and it is impractical to modify that content, there is another option. Due to a legacy issue with Internet Explorer, the browser will enter quirks mode if there is any NON-WHITE space prior to the DOCTYPE declaration. Using this technique you can inject a single line (using web server header additions) and leave content pages untouched. An example of text to trigger quirks mode:</p>
+                <p class="qap">Using this DOCTYPE will force Internet Explorer to use quirks mode to render pages, maintaining the expected content display.</p>
+                <p class="qap">If your pages already contain DOCTYPE declarations and it is impractical to modify that content, there is another option. Due to a legacy issue with Internet Explorer, the browser will enter quirks mode if there is any NON-WHITE space prior to the DOCTYPE declaration. Using this technique you can inject a single line (using web server header additions) and leave content pages untouched. An example of text to trigger quirks mode:</p>
 <pre><code>
 &lt;!use this to trigger quirks mode for IE7--&gt;
 </code></pre>
-<p class="qap">Simply injecting that immediately before the DOCTYPE declaration will trigger Internet Explorer 7 to use quirks mode. As this configuration change is done at the web server level, you may have the ability to granularly control which applications and pages utilize this header feature. This technique will also work <em>even if</em> the DOCTYPE declared by the HTML page is specifically set to use standards mode.</p>
-</div>
-<div class="qabox">
-<p class="qap"><strong>Question</strong>: Our page content is in all the wrong places (DIV layers overlapping and in the wrong place) and I cant figure out where boxes start and end. Is there a tool to let me get more detail on how Internet Explorer 7 wants to render my page?</p>
-<p class="qap"><strong>Answer</strong>: Yes, Microsoft created the Internet Explorer Developer Toolbar to help web developers and designers better work with the DOM and CSS content in Internet Explorer 7. </p>
-<p class="qap"><strong>Solution</strong>: The Developer Toolbar can be downloaded from <a href="http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&amp;displaylang=en</a>. Once installed, you can enable it under the Tools menu. The Developer Toolbar is designed to be used for real time review, analysis and viewing of HTML and CSS page content. One useful option offered by this tool is the ability to outline by DIV layer, which provides a visual guide to layout issues and enables designers and developers to quickly see where Internet Explorer 7 is placing content. In addition, the Developer Toolbar enables you to drill down into specific content and parameter details so you can review the values while looking at rendered content.</p>
-</div>
-
+                <p class="qap">Simply injecting that immediately before the DOCTYPE declaration will trigger Internet Explorer 7 to use quirks mode. As this configuration change is done at the web server level, you may have the ability to granularly control which applications and pages utilize this header feature. This technique will also work <em>even if</em> the DOCTYPE declared by the HTML page is specifically set to use standards mode.</p>
+              </div>
+              <div class="qabox">
+                <p class="qap"><strong>Question</strong>: Our page content is in all the wrong places (DIV layers overlapping and in the wrong place) and I cant figure out where boxes start and end. Is there a tool to let me get more detail on how Internet Explorer 7 wants to render my page?</p>
+                <p class="qap"><strong>Answer</strong>: Yes, Microsoft created the Internet Explorer Developer Toolbar to help web developers and designers better work with the DOM and CSS content in Internet Explorer 7. </p>
+                <p class="qap"><strong>Solution</strong>: The Developer Toolbar can be downloaded from <a href="http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&amp;displaylang=en</a>. Once installed, you can enable it under the Tools menu. The Developer Toolbar is designed to be used for real time review, analysis and viewing of HTML and CSS page content. One useful option offered by this tool is the ability to outline by DIV layer, which provides a visual guide to layout issues and enables designers and developers to quickly see where Internet Explorer 7 is placing content. In addition, the Developer Toolbar enables you to drill down into specific content and parameter details so you can review the values while looking at rendered content.</p>
+              </div>
+            </section>
+          </article>
+        </div>
+      <footer></footer>
+    </div>
+  </body>
+</html>
