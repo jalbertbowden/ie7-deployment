@@ -1,110 +1,76 @@
-
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>IE7 Common Deployment Issues: Tips and Tricks</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header role="banner"></header>
+      <div class="main" role="main">
+        <article role="article">
+          <section role="region">
             <h1><a>Security Changes</a></h1>
             <p>Internet Explorer 7 introduced many new security features and default configurations in order to enhance browser security increase user information safety. Some of those changes affect the way in which Internet Explorer works and may cause issues for enterprise deployments. </p>
-
             <div class="qabox">
               <p class="qap"><strong>Question</strong>: With Internet Explorer 7 we get authentication failure or connection failure errors when trying to access certain HTTPS sites. These sites worked fine before, does Internet Explorer 7 not work with HTTPS sites?</p>
-
-
-
               <p class="qap"><strong>Answer</strong>: Internet Explorer 7 modified the default settings for HTTPS connections to remove default support for SSL v2 certificates. This change was made in order to help increase the overall security of HTTPS connections. SSL v2 certificates do not offer the same level of encryption as the current SSL v3 option, and therefore it is not recommended to use SSL v2 for an encryption mechanism.</p>
-
-
-
               <p class="qap"><strong>Solution</strong>: Microsoft recognizes there are legacy applications which may use SSL v2 certificates, so support for SSL v2 was not removed from the product entirely. It was disabled by default. The recommended solution for this issue is to obtain new SSL v3 certificates for any older/legacy web servers and applications that use SSL v2. If that is not possible, you can enable support for SSL v2 in the Advanced tab of the Internet Options control panel:</p>
 
 
 
 <img border=0 width=420 height=346 src="ie7-tips-and-tricks_files/image006.gif" v:shapes="Picture_x0020_27" />
-
-
-
-There is no Group Policy Object setting to enable this feature. To enable it for your enterprise deployments you would need to either:</p>
-
-Use the Internet Explorer Administration Kit (IEAK) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or
-similar software delivery system).</p> 
-Create a custom registry file to make this change and deploy it via login scripts. The registry key is located at:</p>
- 
-&nbsp;</p>
-
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet
-Settings\] </p>
-
-
-
-Under that key you
-will need to create the SecureProtocols
-REG_DWORD entry with the flag options:</p>
+              <p class="qap">There is no Group Policy Object setting to enable this feature. To enable it for your enterprise deployments you would need to either:</p>
+              <ul>
+                <li>Use the Internet Explorer Administration Kit (IEAK) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or
+similar software delivery system).</li>
+                <li>Create a custom registry file to make this change and deploy it via login scripts. The registry key is located at:
+<pre><code>
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\InternetSettings\]
+</pre></code></li>
+                <li>Under that key you will need to create the <code>SecureProtocols</code> REG_DWORD entry with the flag options:
+<pre><code>
 &quot;The
-SSLv2 flag is 8 (0x008).</p>
+SSLv2 flag is 8 (0x008).
 The SSLv3
-flag is 32 (0x020).</p>
+flag is 32 (0x020).
 The TLSv1
-flag is 128 (0x080).</p>
-
-Hence, if all protocols are enabled, the value is 0x0A8.&nbsp; The IE 7 default is 0xA0.</p>
-
-These changes can be made using Active Directory configuration changes or you can use login scripts to run a registry file file update for installations that do not have AD infrastructures. The registry file needs to contain both of the lines above and have a .reg extension for it to properly import to the system registry. 
+flag is 128 (0x080).&quot;
+</pre></code></li>
+                <li>Hence, if all protocols are enabled, the value is 0x0A8.&nbsp; The IE 7 default is 0xA0.</li>
+                <li>These changes can be made using Active Directory configuration changes or you can use login scripts to run a registry file file update for installations that do not have AD infrastructures. The registry file needs to contain both of the lines above and have a .reg extension for it to properly import to the system registry.</li>
+              </ul>
             </div>
             <div class="qabox">
               <p class="qap"><strong>Question</strong>: Why do we see Certificate Errors: Navigation Blocked page for sites that used to work fine?</p>
-
-
-
               <p class="qap"><strong>Answer</strong>: Internet Explorer 7 modified the default security settings for HTTPS connections to increase overall security in a number of instances. As a result of the new security default settings, IE 7 will block users (by presenting a red-colored information page) in any of the following instances when visiting an HTTPS site:</p>
-Certificate was issued to a hostname other than the current URLs hostname </p>
-Certificate was issued by an untrusted root </p>
-Certificate is expired </p>
-Certificate is revoked</p>
-
-              <p class="qap"><strong>&nbsp;</strong></p>
-
-              <p class="qap"><strong>Solution</strong>: Microsoft recognizes there are legacy applications which may utilize older or internally issued certificates that now trigger the new warning page.
- The intent of this change was to increase security and protect users from online threats.
- Microsoft recommends upgrading HTTPS sites to meet the newer level of security and validation checking.
- To accommodate for those scenarios where that is not practical, you are able to modify the default settings in your deployment. In addition, certain situations, such as allowing the use of expired or revoked certificate should never be over-ridden. Doing so is likely to create a reduction in user and system security.
- Microsoft also strongly advises against modifying the default settings regarding certificate address mismatch.
- Disabling this change may expose your users to improperly configured systems on the Internet, and may result in compromised security of the machine.</p>
-
-<br>
-A frequent scenario is users being blocked by default by the use of internally issued certificates for intranet sites (untrusted root issue).
- To resolve that error you should use Group Policy to deploy the internal root certificate used by your organization. You can also use the Certificate Manager Tool (information at <a href="http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx</a>, but the tool is included in Visual Studio) to build a login script to manually install the custom root certificate. That certificate will be stored in the local machine certificate store, not as a part of Internet Explorer.
-More information on working with the certificate store, and how to add your own certificates, can be found at <a href="http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true">http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true</a>.
+              <ul>
+                <li>Certificate was issued to a hostname other than the current URLs hostname</li>
+                <li>Certificate was issued by an untrusted root</li>
+                <li>Certificate is expired</li>
+                <li>Certificate is revoked</li>
+              </ul>
+              <p class="qap"><strong>Solution</strong>: Microsoft recognizes there are legacy applications which may utilize older or internally issued certificates that now trigger the new warning page. The intent of this change was to increase security and protect users from online threats. Microsoft recommends upgrading HTTPS sites to meet the newer level of security and validation checking. To accommodate for those scenarios where that is not practical, you are able to modify the default settings in your deployment. In addition, certain situations, such as allowing the use of expired or revoked certificate should never be over-ridden. Doing so is likely to create a reduction in user and system security. Microsoft also strongly advises against modifying the default settings regarding certificate address mismatch. Disabling this change may expose your users to improperly configured systems on the Internet, and may result in compromised security of the machine.</p>
+              <p class="qap">A frequent scenario is users being blocked by default by the use of internally issued certificates for intranet sites (untrusted root issue). To resolve that error you should use Group Policy to deploy the internal root certificate used by your organization. You can also use the Certificate Manager Tool (information at <a href="http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/e78byta0(VS.80).aspx</a>, but the tool is included in Visual Studio) to build a login script to manually install the custom root certificate. That certificate will be stored in the local machine certificate store, not as a part of Internet Explorer. More information on working with the certificate store, and how to add your own certificates, can be found at <a href="http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true">http://technet2.microsoft.com/windowsserver/en/library/2c03582f-00b2-43e5-ae1d-493894ad0fd71033.mspx?mfr=true</a>.</p>
             </div>
             <div class="qabox">
-              <p class="qap"><strong>Question</strong>: We have users locked-down as standard users. Before Internet Explorer 7 our support staff could use the Run As option to access Windows Explorer as an admin and perform necessary tasks (e.g. installing software).
- With Internet Explorer 7 we are no longer able to use that option. Is something wrong with our configuration?</p>
-
-
-
-              <p class="qap"><strong>Answer</strong>: No, this change was made to help increase the overall security of Internet Explorer and protect users against online threats. The issue is related to the process separation of Windows Explorer and Internet Explorer. Prior to the release of Internet Explorer 7, those two processes were linked and support staff/system administrators were able to use that link in order to open a Windows Explorer window (by entering a local file system location in the address bar) with administrative credentials. Now that we have separated those two processes, this option is no longer possible. Attempting to use the Run
-As option to launch Internet Explorer 7 will perform as expected and launch the process with administrative privileges.
-When the administrator enters a local file system location in the Internet Explorer 7 address bar, the separate Windows Explorer process is called and it launches with the logged in user credentials. </p>
-
-
-
-              <p class="qap"><strong>Solution</strong>: Since this change was made by design to increase security, there is no way to disable this setting or simple workaround. It was intended to create a barrier between the two processes and isolate Windows Explorer from potential external compromise.
- The only way to access the local file system with administrator level credentials would be to logon to the local machine directly to perform the necessary tasks.
- In the case of remote support, Microsoft recommends using Remote Desktop Connections in order to login with the proper credentials required to perform the required task.</p>
+              <p class="qap"><strong>Question</strong>: We have users locked-down as standard users. Before Internet Explorer 7 our support staff could use the Run As option to access Windows Explorer as an admin and perform necessary tasks (e.g. installing software). With Internet Explorer 7 we are no longer able to use that option. Is something wrong with our configuration?</p>
+              <p class="qap"><strong>Answer</strong>: No, this change was made to help increase the overall security of Internet Explorer and protect users against online threats. The issue is related to the process separation of Windows Explorer and Internet Explorer. Prior to the release of Internet Explorer 7, those two processes were linked and support staff/system administrators were able to use that link in order to open a Windows Explorer window (by entering a local file system location in the address bar) with administrative credentials. Now that we have separated those two processes, this option is no longer possible. Attempting to use the Run As option to launch Internet Explorer 7 will perform as expected and launch the process with administrative privileges. When the administrator enters a local file system location in the Internet Explorer 7 address bar, the separate Windows Explorer process is called and it launches with the logged in user credentials. </p>
+              <p class="qap"><strong>Solution</strong>: Since this change was made by design to increase security, there is no way to disable this setting or simple workaround. It was intended to create a barrier between the two processes and isolate Windows Explorer from potential external compromise.  The only way to access the local file system with administrator level credentials would be to logon to the local machine directly to perform the necessary tasks. In the case of remote support, Microsoft recommends using Remote Desktop Connections in order to login with the proper credentials required to perform the required task.</p>
             </div>
             <div class="qabox">
-              <p id="vista" class="qap"><strong>Question</strong>: We're using Internet Explorer 7 and having issues on Windows Vista with some legacy applications that read and write to the local file system.
- Why cant it read and write the files properly? Is there something different about Internet Explorer 7 on Windows XP?
-
-
-
-              <p class="qap"><strong>Answer</strong>: The main difference between Internet Explorer 7 on Windows XP and Windows Vista is that Windows Vista offers an additional security protection to help prevent unintentional system access by malicious software or other parties.
- This feature is known as Protected Mode, and helps protect users and systems by restricting the ability of the Internet Explorer process from reading and writing to critical areas of the file system. Protected Mode allows reading and writing from the user hive area of the file system, but prohibits activity to areas outside that perimeter.
- In making this change, some applications fail to work properly as they are attempting to read and write from restricted areas. Protected Mode does make an effort to assist improperly written applications by virtualizing data reads and writes from the file system, however this should not be used as a remediation option for Protected Mode issues.</p>
-
-
-
-              <p class="qap"><strong>Solution</strong>: To resolve issues with Protected Mode application compatibility problems, customers are encouraged to rewrite the application (or extensions) to be Protected Mode aware. Resource information about working with Protected Mode is available at <a href="http://msdn2.microsoft.com/en-us/library/bb250462.aspx">http://msdn2.microsoft.com/en-us/library/bb250462.aspx</a>.
- In addition, the document at <a href="http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx">http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx</a> on security and compatibility issues in Internet Explorer 7 will provide information about how to use the <a href="#ACT">Application Compatibility Toolkit</a> to diagnose specific compatibility issues with Protected Mode problems.</p>
-
-
-
-Microsoft does not recommend disabling Protected Mode as a solution to application compatibility. Removing this security mechanism may expose users and computers to unnecessary system compromise, loss of resources or unwanted installation of software.</p>
+              <p id="vista" class="qap"><strong>Question</strong>: We're using Internet Explorer 7 and having issues on Windows Vista with some legacy applications that read and write to the local file system. Why cant it read and write the files properly? Is there something different about Internet Explorer 7 on Windows XP?
+              <p class="qap"><strong>Answer</strong>: The main difference between Internet Explorer 7 on Windows XP and Windows Vista is that Windows Vista offers an additional security protection to help prevent unintentional system access by malicious software or other parties. This feature is known as Protected Mode, and helps protect users and systems by restricting the ability of the Internet Explorer process from reading and writing to critical areas of the file system. Protected Mode allows reading and writing from the user hive area of the file system, but prohibits activity to areas outside that perimeter. In making this change, some applications fail to work properly as they are attempting to read and write from restricted areas. Protected Mode does make an effort to assist improperly written applications by virtualizing data reads and writes from the file system, however this should not be used as a remediation option for Protected Mode issues.</p>
+              <p class="qap"><strong>Solution</strong>: To resolve issues with Protected Mode application compatibility problems, customers are encouraged to rewrite the application (or extensions) to be Protected Mode aware. Resource information about working with Protected Mode is available at <a href="http://msdn2.microsoft.com/en-us/library/bb250462.aspx">http://msdn2.microsoft.com/en-us/library/bb250462.aspx</a>. In addition, the document at <a href="http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx">http://msdn2.microsoft.com/en-us/library/bb250493(VS.85).aspx</a> on security and compatibility issues in Internet Explorer 7 will provide information about how to use the <a href="#ACT">Application Compatibility Toolkit</a> to diagnose specific compatibility issues with Protected Mode problems.</p> 
+              <p class="qap">Microsoft does not recommend disabling Protected Mode as a solution to application compatibility. Removing this security mechanism may expose users and computers to unnecessary system compromise, loss of resources or unwanted installation of software.</p>
             </div>
+          </section>
+        </article>
+        </div>
+      <footer></footer>
+    </div>
+  </body>
+</html>
 
