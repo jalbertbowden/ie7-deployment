@@ -13,98 +13,24 @@
         <article role="article">
           <section role="region">
             <h1><abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
-
-<h1><a name="_Toc194241896">ActiveX Controls</a></h1>
-<p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
- .5pt solid black;mso-border-insidev:.5pt solid black'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
-  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>I am testing with Internet Explorer 7 and I keep getting prompted by
-  the information bar to run an ActiveX control, why am I getting this warning?</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: One of the
-  security improvements made in Internet Explorer 7 is the addition of a
-  feature called ActiveX Opt-In. The
-  purpose of this feature was to restrict the use of ActiveX controls within
-  Internet Explorer to those specifically intended by the user (or
-  administrator). Unlike previous
-  versions of Internet Explorer, users will now be prompted to run an ActiveX
-  control if they have never used it before.
-  Once approved, the user will never be prompted again for that specific
-  control.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: To best address
-  this issue and provide for system stability and security in your enterprise,
-  Microsoft recommends you create an internal list of approved ActiveX controls
-  (both public and private in the case of internally created ActiveX
-  controls). Centrally managing this
-  list of approved controls will help ensure users are not blocked from certain
-  actions and need helpdesk support to install/approve ActiveX controls for
-  locked down systems. The Group Policy
-  setting is found at:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
-  Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
-  Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt;
-  Add-on List<span style='font-size:10.0pt'><o:p></o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Enter all approved ActiveX controls (listed by CLSID) in this object
-  container. You need to enter two
-  items, Name and Value. The Name is the
-  CLSID and the Value needs to be one of:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>0  Deny this
-  add-on</p>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>1  Enable this
-  add-on</p>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:.5in;margin-bottom:.0001pt;line-height:normal'>2  Permit user to
-  use Manage Add-ons</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>To quickly and easily find your complete list of CLSIDs, once you
-  have added all approved controls to a machine, open the Manage Add-ons dialog
-  and add the Class ID column.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><!--[if gte vml 1]><v:shape id="_x0000_i1026"
-   type="#_x0000_t75" style='width:434.25pt;height:407.25pt' o:ole="">
-   <v:imagedata src="ie7-tips-and-tricks_files/image003.png" o:title=""/>
-  </v:shape><![endif]--><![if !vml]><img border=0 width=579 height=543
-  src="ie7-tips-and-tricks_files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><!--[if gte mso 9]><xml>
-   <o:OLEObject Type="Embed" ProgID="PBrush" ShapeID="_x0000_i1026"
-    DrawAspect="Content" ObjectID="_1429160793">
-   </o:OLEObject>
-  </xml><![endif]--></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Once this list is complete, you can use Group Policy to create and
-  propagate the approved list to systems in your AD domain.<span
-  style='mso-spacerun:yes'> If you want to lock down this list of
-  controls to only those you have approved for your organization, enable the
-  Group Policy Setting at:</p>
+            <h1><a name="_Toc194241896">ActiveX Controls</a></h1>
+            <p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
+            <div class="qabox">
+              <p class="qap"><strong>Question</strong>: I am testing with Internet Explorer 7 and I keep getting prompted by the information bar to run an ActiveX control, why am I getting this warning?</p>
+              <p class="qap"><strong>Answer</strong>: One of the security improvements made in Internet Explorer 7 is the addition of a feature called ActiveX Opt-In. The purpose of this feature was to restrict the use of ActiveX controls within Internet Explorer to those specifically intended by the user (or administrator). Unlike previous versions of Internet Explorer, users will now be prompted to run an ActiveX control if they have never used it before. Once approved, the user will never be prompted again for that specific control.</p>
+              <p class="qap"><strong>Solution</strong>: To best address this issue and provide for system stability and security in your enterprise, Microsoft recommends you create an internal list of approved ActiveX controls (both public and private in the case of internally created ActiveX controls). Centrally managing this list of approved controls will help ensure users are not blocked from certain actions and need helpdesk support to install/approve ActiveX controls for locked down systems. The Group Policy setting is found at:</p>
+<pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Add-on List</code></pre>
+              <p class="qap">Enter all approved ActiveX controls (listed by CLSID) in this object container. You need to enter two items, Name and Value. The Name is the CLSID and the Value needs to be one of:</p>
+              <ol>
+                <li>0  Deny this add-on</li>
+                <li>1  Enable this add-on</li>
+                <li>2  Permit user to use Manage Add-ons</li>
+              </ol>
+              <p class="qap">To quickly and easily find your complete list of CLSIDs, once you have added all approved controls to a machine, open the Manage Add-ons dialog and add the Class ID column.</p>
+              <figure>
+                <img border=0 width=579 height=543 src="ie7-tips-and-tricks_files/image004.jpg" alt="" />
+              </figure>
+              <p class="qap">Once this list is complete, you can use Group Policy to create and propagate the approved list to systems in your AD domain. If you want to lock down this list of controls to only those you have approved for your organization, enable the Group Policy Setting at:</p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
