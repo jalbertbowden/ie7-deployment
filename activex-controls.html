@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="content">
-      <header role="banner"></header>
+      <header role="banner"><h1><abbr title="Internet Explorer Version 7">ie7</abbr>: Common Deployment Issues</header>
       <div class="main" role="main">
         <article role="article">
           <section role="region">
@@ -28,272 +28,50 @@
               </ol>
               <p class="qap">To quickly and easily find your complete list of CLSIDs, once you have added all approved controls to a machine, open the Manage Add-ons dialog and add the Class ID column.</p>
               <figure>
-                <img border=0 width=579 height=543 src="ie7-tips-and-tricks_files/image004.jpg" alt="" />
+                <img src="i/adding-class-id-column-to-manage-add-ons-dialog-in-ie7.jpg" alt="Adding 'Class ID' Column to Manage Add-ons Dialog in IE7" />
               </figure>
               <p class="qap">Once this list is complete, you can use Group Policy to create and propagate the approved list to systems in your AD domain. If you want to lock down this list of controls to only those you have approved for your organization, enable the Group Policy Setting at:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
-  Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
-  Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny
-  all add-ons unless specifically allowed in the Add-on list</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>To provide additional control over the user experience, and remove
-  the information bar notifications entirely, you can disable the Group
-  Policy Object found at:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
-  Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
-  Internet Explorer -&gt; Security Features -&gt; Information Bar -&gt;
-  Internet Explorer Processes<span style='font-size:10.0pt'><o:p></o:p></p>
-  </td>
- </tr>
-</table>
-
-<p><o:p>&nbsp;</o:p></p>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
- .5pt solid black;mso-border-insidev:.5pt solid black'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
-  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Internet Explorer 7 is blocking users from running critical ActiveX
-  controls so they cant use our web applications.<span
-  style='mso-spacerun:yes'> How can I unblock those controls?</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: By default,
-  Internet Explorer 7 is designed to block all previously unused ActiveX
-  controls. This change was made to
-  increase overall security and limit potential system exposure due to ActiveX
-  controls that were never intended to be exposed to the Internet.<span
-  style='mso-spacerun:yes'> Certain well known and tested ActiveX
-  controls are pre-approved and will not prompt users even if they have never
-  previously used the ActiveX control.
-  More information about the ActiveX Opt-In feature can be found at <a
-  href="http://msdn2.microsoft.com/en-us/library/bb250471.aspx">http://msdn2.microsoft.com/en-us/library/bb250471.aspx</a>.
-  </p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: You can use
-  Group Policy to specifically approve certain controls, and/or block all but
-  those approved for your organization.
-  The Group Policy setting for managing the list is found at:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
-  Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
-  Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt;
-  Add-on List<span style='font-size:10.0pt'><o:p></o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Once your list is complete, you can use Group Policy to create and
-  propagate the approved list to systems in your AD domain.<span
-  style='mso-spacerun:yes'> If you want to lock down this list of
-  controls to only those you have approved for your organization, enable the
-  Group Policy Setting at:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;background:silver;mso-highlight:silver'>Computer
-  Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt;
-  Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny
-  all add-ons unless specifically allowed in the Add-on list</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>In addition, users running Internet Explorer 7 on Windows Vista can
-  take advantage of the ActiveX Installation Service to install pre-approved
-  controls without the need for administrator privileges.<span
-  style='mso-spacerun:yes'> More information about the ActiveX
-  Installation Service can be found at <a
-  href="http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx">http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx</a>.</p>
-  </td>
- </tr>
-</table>
-
-<p><o:p>&nbsp;</o:p></p>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
- .5pt solid black;mso-border-insidev:.5pt solid black'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
-  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Im running the 64 bit version of IE and it keeps crashing when I go
-  to various websites, whats the problem with Internet Explorer?</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: You are most
-  likely seeing an issue where Internet Explorer is experiencing a situation
-  with add-ons that are not 64 bit compatible and Internet Explorer is unable
-  to properly load and use the 32 bit versions.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: At this time we
-  are working directly with many of the top add-on software vendors to make
-  their ActiveX controls available in 64 bit versions, but most have not yet
-  made version of their applications available.
-  Until they make their software available, you would need to run
-  Internet Explorer in 32 bit mode in order to access sites which use those
-  controls. For browsing sites that do
-  not use those controls you can continue to run the standard 64 bit version
-  and take advantage of the increased speed and performance of that version.</p>
-  </td>
- </tr>
-</table>
-
-<p><o:p>&nbsp;</o:p></p>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
- .5pt solid black;mso-border-insidev:.5pt solid black'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
-  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>We are testing Internet Explorer 7 on both Windows Vista and Windows
-  XP SP2. We get a red X icon when
-  trying to use Outlook Web Access with Internet Explorer 7 on Windows Vista,
-  but Windows XP SP 2 works fine. Whats
-  wrong with Windows Vista?</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: There is nothing
-  wrong with Windows Vista, or Internet Explorer 7.<span
-  style='mso-spacerun:yes'> Among many of the changes made in Windows
-  Vista, the DHTML editing control was deprecated.<span
-  style='mso-spacerun:yes'> In that process, any websites which made
-  use of the control will no longer be able to access it.<span
-  style='mso-spacerun:yes'> Outlook Web Access is one popular application
-  that used the DHTML control.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: For Windows
-  Vista users the only solution is to modify the control which the web
-  application is attempting to use. The
-  Exchange Server team issued a patch (Knowledge Base article 911829 <a
-  href="http://support.microsoft.com/kb/911829">http://support.microsoft.com/kb/911829</a>
-  ) to resolve this issue. Applying this
-  patch will resolve the issue and restore proper functionality for all
-  users. You will need to contact your
-  other software vendors to inquire about and obtain their software fixes if
-  they use this deprecated control.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Be advised this control was deprecated for security purposes and
-  Microsoft recommends it should not be installed on Windows Vista machines as
-  a workaround to this issue. The only
-  recommended workaround is to install the Exchange Server patch, there is no
-  client side fix for this issue.</p>
-  </td>
- </tr>
-</table>
-
-<p><o:p>&nbsp;</o:p></p>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
- .5pt solid black;mso-border-insidev:.5pt solid black'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width=638 valign=top style='width:6.65in;border:solid black 1.0pt;
-  mso-border-alt:solid black .5pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Question</b>:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>Our systems create PDF documents and we keep having issues loading a
-  document, closing the tab and opening a new document.<span
-  style='mso-spacerun:yes'> After we close the first one, we keep
-  getting blank pages. Whats wrong with
-  our installation?</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Answer</b>: There is nothing
-  wrong with your installation. We are
-  aware of this issue being reported by some users, and are working with Adobe
-  to provide an updated ActiveX control to resolve the issue.</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'>Solution</b>: The issue
-  appears to be caused when the Adobe Acrobat ActiveX control fails to properly
-  register and react to a tab close event.
-  The currently available control was written before Internet Explorer
-  supported a tab browsing interface, so the control is expecting to close
-  along with the connected iexplore.exe process.<span
-  style='mso-spacerun:yes'> If any tabs remain open when the tab with
-  PDF document closes, the Adobe Acrobat process AcroRd32.exe remains running.<span
-  style='mso-spacerun:yes'> Since the process is not properly terminated,
-  it will not launch again for the next PDF document load request.<span
-  style='mso-spacerun:yes'> There are two options for workarounds until
-  Adobe provides an updated client solution:</p>
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-  <p class=MsoListParagraphCxSpFirst style='margin-bottom:0in;margin-bottom:
-  .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
-  l0 level1 lfo3'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
-  style='mso-list:Ignore'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <![endif]>When users encounter issues with loading PDF
-  documents and only see a blank page, they can manually terminate the
-  AcroRd32.exe process. Once the
-  process is terminated they need to re-access the desired page/report and
-  Adobe Acrobat should load properly.</p>
-  <p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
-  .0001pt;mso-add-space:auto;text-indent:-.25in;line-height:normal;mso-list:
-  l0 level1 lfo3'><![if !supportLists]><span style='mso-bidi-font-family:Calibri'><span
-  style='mso-list:Ignore'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <![endif]>Open any PDF documents in a new window.</p>
-  <p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
-  margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
-  text-indent:-.25in;line-height:normal;mso-list:l0 level2 lfo3'><![if !supportLists]><span
-  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>a.<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <![endif]>This
-  can be done programmatically by modifying your web application to force a new
-  window for each PDF document. Using
-  the JavaScript window.open command is one solution. </p>
-  <p class=MsoListParagraphCxSpLast style='margin-top:0in;margin-right:0in;
-  margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
-  text-indent:-.25in;line-height:normal;mso-list:l0 level2 lfo3'><![if !supportLists]><span
-  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>b.<span
-  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <![endif]>Users
-  can manually force this type of action by holding down the SHIFT key when
-  clicking on a PDF document link (or report generation link).<span
-  style='mso-spacerun:yes'> An alternative technique would be to right
-  click, then select Open in New Window.</p>
-  </td>
- </tr>
-</table>
-          </section></article>
+<pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny all add-ons unless specifically allowed in the Add-on list</code></pre>
+              <p class="qap">To provide additional control over the user experience, and remove the information bar notifications entirely, you can disable the Group Policy Object found at:</p>
+<pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Information Bar -&gt; Internet Explorer Processes</code></pre>
+            </div>
+            <div class="qabox">
+              <p class="qap"><strong>Question</strong>: Internet Explorer 7 is blocking users from running critical ActiveX controls so they cant use our web applications. How can I unblock those controls?</p>
+              <p class="qap"><strong>Answer</strong>: By default, Internet Explorer 7 is designed to block all previously unused ActiveX controls. This change was made to increase overall security and limit potential system exposure due to ActiveX controls that were never intended to be exposed to the Internet. Certain well known and tested ActiveX controls are pre-approved and will not prompt users even if they have never previously used the ActiveX control. More information about the ActiveX Opt-In feature can be found at <a href="http://msdn2.microsoft.com/en-us/library/bb250471.aspx">http://msdn2.microsoft.com/en-us/library/bb250471.aspx</a>.</p>
+              <p class="qap"><strong>Solution</strong>: You can use Group Policy to specifically approve certain controls, and/or block all but those approved for your organization. The Group Policy setting for managing the list is found at:</p>
+<pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Add-on List</code></pre>
+              <p class="qap">Once your list is complete, you can use Group Policy to create and propagate the approved list to systems in your AD domain. If you want to lock down this list of controls to only those you have approved for your organization, enable the Group Policy Setting at:</p>
+<pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny all add-ons unless specifically allowed in the Add-on list</code></pre>
+              <p class="qap">In addition, users running Internet Explorer 7 on Windows Vista can take advantage of the ActiveX Installation Service to install pre-approved controls without the need for administrator privileges. More information about the ActiveX Installation Service can be found at <a href="http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx">http://blogs.msdn.com/uac/archive/2006/09/13/752248.aspx</a>.</p>
+            </div>
+            <div class="qabox">
+              <p class="qap"><strong>Question</strong>: Im running the 64 bit version of IE and it keeps crashing when I go to various websites, whats the problem with Internet Explorer?</p>
+              <p class="qap"><strong>Answer</strong>: You are most likely seeing an issue where Internet Explorer is experiencing a situation with add-ons that are not 64 bit compatible and Internet Explorer is unable to properly load and use the 32 bit versions.</p>
+              <p class="qap"><strong>Solution</strong>: At this time we are working directly with many of the top add-on software vendors to make their ActiveX controls available in 64 bit versions, but most have not yet made version of their applications available. Until they make their software available, you would need to run Internet Explorer in 32 bit mode in order to access sites which use those controls. For browsing sites that do not use those controls you can continue to run the standard 64 bit version and take advantage of the increased speed and performance of that version.</p>
+            </div>
+            <div class="qabox">
+              <p class="qap"><strong>Question</strong>: We are testing Internet Explorer 7 on both Windows Vista and Windows XP SP2. We get a red X icon when trying to use Outlook Web Access with Internet Explorer 7 on Windows Vista, but Windows XP SP 2 works fine. Whats wrong with Windows Vista?</p>
+              <p class="qap"><strong>Answer</strong>: There is nothing wrong with Windows Vista, or Internet Explorer 7. Among many of the changes made in Windows Vista, the DHTML editing control was deprecated. In that process, any websites which made use of the control will no longer be able to access it. Outlook Web Access is one popular application that used the DHTML control.</p>
+              <p class="qap"><strong>Solution</strong>: For Windows Vista users the only solution is to modify the control which the web application is attempting to use. The Exchange Server team issued a patch (Knowledge Base article 911829 <a href="http://support.microsoft.com/kb/911829">http://support.microsoft.com/kb/911829</a>) to resolve this issue. Applying this patch will resolve the issue and restore proper functionality for all users. You will need to contact your other software vendors to inquire about and obtain their software fixes if they use this deprecated control.</p>
+              <p class="qap">Be advised this control was deprecated for security purposes and Microsoft recommends it should not be installed on Windows Vista machines as a workaround to this issue. The only recommended workaround is to install the Exchange Server patch, there is no client side fix for this issue.</p>
+            </div>
+            <div class="qabox">
+              <p class="qap"><strong>Question</strong>: Our systems create PDF documents and we keep having issues loading a document, closing the tab and opening a new document. After we close the first one, we keep getting blank pages. Whats wrong with our installation?</p>
+              <p class="qap"><strong>Answer</strong>: There is nothing wrong with your installation. We are aware of this issue being reported by some users, and are working with Adobe to provide an updated ActiveX control to resolve the issue.</p>
+              <p class="qap"><strong>Solution</strong>: The issue appears to be caused when the Adobe Acrobat ActiveX control fails to properly register and react to a tab close event. The currently available control was written before Internet Explorer supported a tab browsing interface, so the control is expecting to close along with the connected iexplore.exe process. If any tabs remain open when the tab with PDF document closes, the Adobe Acrobat process AcroRd32.exe remains running. Since the process is not properly terminated, it will not launch again for the next PDF document load request. There are two options for workarounds until Adobe provides an updated client solution:</p>
+              <ol
+                <li>When users encounter issues with loading PDF documents and only see a blank page, they can manually terminate the AcroRd32.exe process. Once the process is terminated they need to re-access the desired page/report and Adobe Acrobat should load properly.</p>
+                <li>Open any PDF documents in a new window.
+                  <ol class="ol-sub">
+                    <li>This can be done programmatically by modifying your web application to force a new window for each PDF document. Using the JavaScript window.open command is one solution.</li>
+                    <li>Users can manually force this type of action by holding down the SHIFT key when clicking on a PDF document link (or report generation link). An alternative technique would be to right click, then select Open in New Window.</li>
+                  </ol>
+                </li>
+              </ol>
+            </section>
+          </article>
         </div>
-      <footer></footer>
+      <footer><h3 class="headernext"><a href="cascading-style-sheets.html"><abbr>css</abbr></a></h3></footer>
     </div>
   </body>
 </html>
