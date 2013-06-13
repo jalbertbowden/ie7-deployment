@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <title>IE7 Common Deployment Issues: Tips and Tricks</title>
+    <title>Security Changes &#45; IE7 Common Deployment Issues: Tips and Tricks</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
     <link type="text/css" rel="stylesheet" href="style.css" />
   </head>
@@ -18,13 +18,13 @@
               <p class="qap"><strong>Question</strong>: With Internet Explorer 7 we get authentication failure or connection failure errors when trying to access certain HTTPS sites. These sites worked fine before, does Internet Explorer 7 not work with HTTPS sites?</p>
               <p class="qap"><strong>Answer</strong>: Internet Explorer 7 modified the default settings for HTTPS connections to remove default support for SSL v2 certificates. This change was made in order to help increase the overall security of HTTPS connections. SSL v2 certificates do not offer the same level of encryption as the current SSL v3 option, and therefore it is not recommended to use SSL v2 for an encryption mechanism.</p>
               <p class="qap"><strong>Solution</strong>: Microsoft recognizes there are legacy applications which may use SSL v2 certificates, so support for SSL v2 was not removed from the product entirely. It was disabled by default. The recommended solution for this issue is to obtain new SSL v3 certificates for any older/legacy web servers and applications that use SSL v2. If that is not possible, you can enable support for SSL v2 in the Advanced tab of the Internet Options control panel:</p>
-
-
-
-<img border=0 width=420 height=346 src="ie7-tips-and-tricks_files/image006.gif" v:shapes="Picture_x0020_27" />
+              <figure>
+                <img border=0 width=420 height=346 src="i/enabling-support-for-ssl-v2-dialog-for-ie7-in-the-advanced-tab-of-the-internet-options-control-panel.gif" alt="Enabling Support for IE7 in the Advanced Tab of the Internet Options Control Panel" />
+                <figcaption>Enabling Support for <abbr>ie7</abbr> in the Advanced Tab of the Internet Options Control Panel</figcaption>
+              </figure>
               <p class="qap">There is no Group Policy Object setting to enable this feature. To enable it for your enterprise deployments you would need to either:</p>
               <ul>
-                <li>Use the Internet Explorer Administration Kit (IEAK) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or
+                <li>Use the <strong>Internet Explorer Administration Kit</strong> (<strong><abbr title="Internet Explorer Administration Toolkit">ieak</abbr></strong>) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or
 similar software delivery system).</li>
                 <li>Create a custom registry file to make this change and deploy it via login scripts. The registry key is located at:
 <pre><code>
@@ -69,8 +69,7 @@ flag is 128 (0x080).&quot;
           </section>
         </article>
         </div>
-      <footer></footer>
+      <footer><h3 class="headernext"><a href="act-application-compatibility-toolkit.html"><abbr>act</abbr> (Application Compatibility Toolkit</a></h3></footer>
     </div>
   </body>
 </html>
-

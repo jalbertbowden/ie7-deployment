@@ -2,18 +2,17 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <title>IE7 Common Deployment Issues: Tips and Tricks</title>
+    <title>ActiveX Controls &#45; IE7 Common Deployment Issues: Tips and Tricks</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
     <link type="text/css" rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="content">
-      <header role="banner"><h1><abbr title="Internet Explorer Version 7">ie7</abbr>: Common Deployment Issues</header>
+      <header role="banner"><h1 class="headerbanner"><abbr class="ie7icon" title="Internet Explorer Version 7">ie7</abbr>: Common Deployment Issues</header>
       <div class="main" role="main">
         <article role="article">
           <section role="region">
-            <h1><abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
-            <h1><a name="_Toc194241896">ActiveX Controls</a></h1>
+            <h1 class="headerpage">ActiveX Controls &#45; <abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
             <p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
             <div class="qabox">
               <p class="qap"><strong>Question</strong>: I am testing with Internet Explorer 7 and I keep getting prompted by the information bar to run an ActiveX control, why am I getting this warning?</p>
@@ -28,7 +27,9 @@
               </ol>
               <p class="qap">To quickly and easily find your complete list of CLSIDs, once you have added all approved controls to a machine, open the Manage Add-ons dialog and add the Class ID column.</p>
               <figure>
-                <img src="i/adding-class-id-column-to-manage-add-ons-dialog-in-ie7.jpg" alt="Adding 'Class ID' Column to Manage Add-ons Dialog in IE7" />
+                <img src="i/adding-class-id-column-to-manage-add-ons-dialog-in-ie7.png" alt="Adding 'Class ID' Column to Manage Add-ons Dialog in IE7" />
+                <figcaption>Adding 'Class ID' Column to Manage Add-ons Dialog in IE7</figcaption>
+              
               </figure>
               <p class="qap">Once this list is complete, you can use Group Policy to create and propagate the approved list to systems in your AD domain. If you want to lock down this list of controls to only those you have approved for your organization, enable the Group Policy Setting at:</p>
 <pre><code>Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Internet Explorer -&gt; Security Features -&gt; Add-on Management -&gt; Deny all add-ons unless specifically allowed in the Add-on list</code></pre>
@@ -59,8 +60,8 @@
               <p class="qap"><strong>Question</strong>: Our systems create PDF documents and we keep having issues loading a document, closing the tab and opening a new document. After we close the first one, we keep getting blank pages. Whats wrong with our installation?</p>
               <p class="qap"><strong>Answer</strong>: There is nothing wrong with your installation. We are aware of this issue being reported by some users, and are working with Adobe to provide an updated ActiveX control to resolve the issue.</p>
               <p class="qap"><strong>Solution</strong>: The issue appears to be caused when the Adobe Acrobat ActiveX control fails to properly register and react to a tab close event. The currently available control was written before Internet Explorer supported a tab browsing interface, so the control is expecting to close along with the connected iexplore.exe process. If any tabs remain open when the tab with PDF document closes, the Adobe Acrobat process AcroRd32.exe remains running. Since the process is not properly terminated, it will not launch again for the next PDF document load request. There are two options for workarounds until Adobe provides an updated client solution:</p>
-              <ol
-                <li>When users encounter issues with loading PDF documents and only see a blank page, they can manually terminate the AcroRd32.exe process. Once the process is terminated they need to re-access the desired page/report and Adobe Acrobat should load properly.</p>
+              <ol class="olist">
+                <li>When users encounter issues with loading PDF documents and only see a blank page, they can manually terminate the AcroRd32.exe process. Once the process is terminated they need to re-access the desired page/report and Adobe Acrobat should load properly.</li>
                 <li>Open any PDF documents in a new window.
                   <ol class="ol-sub">
                     <li>This can be done programmatically by modifying your web application to force a new window for each PDF document. Using the JavaScript window.open command is one solution.</li>
