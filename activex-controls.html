@@ -8,11 +8,11 @@
   </head>
   <body>
     <div class="content">
-      <header role="banner"><h1 class="headerbanner"><abbr class="ie7icon" title="Internet Explorer Version 7">ie7</abbr>: Common Deployment Issues</header>
+      <header role="banner"><h1 class="headerlogo"><b class="winie7logo"><abbr title="Internet Explorer Version 7">ie7</abbr></b>: Common Deployment Issues &#45; Tips and Tricks</h1></header>
       <div class="main" role="main">
         <article role="article">
           <section role="region">
-            <h1 class="headerpage">ActiveX Controls &#45; <abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
+            <h1>ActiveX Controls &#45; <abbr title="Internet Explorer Version 7">ie7</abbr> Common Deployment Issues: Tips and Tricks</h1>
             <p>Internet Explorer 7 introduced a new feature designed to help prevent users from being potentially and unknowingly exposed to malicious attacks. Internet Explorer has long offered web developers the ability to build custom components and extensibility solutions using the ActiveX platform. As with any extensibility model, the more you allow people to do and the more you expose the users system, the more potential for abuse. To counter that potential issue, IE7 introduced the ActiveX opt-in feature, which disables all previously unused controls by default. This helps in both case of upgrades and new installs, since ActiveX opt-in protects the user against controls that are installed along with non-web enabled applications. Prior to IE 7, those controls would be exposed to the Internet by default. Now the user is protected, and must give their approval before the control can be invoked. Any ActiveX control installed on the system must be on the approved list before it can be instantiated in the browser. A control which has never been used before (or previously called but not approved) will trigger IE7 to display the information bar to prompt the user to approve the control.</p>
             <div class="qabox">
               <p class="qap"><strong>Question</strong>: I am testing with Internet Explorer 7 and I keep getting prompted by the information bar to run an ActiveX control, why am I getting this warning?</p>

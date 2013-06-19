@@ -32,7 +32,7 @@ h3{font-size:1.35em; margin-bottom:1.0em; margin-top:1em; padding-left:1.2em}
 h4{margin-bottom:.9em}
 
 h2 a,h3 a{text-decoration:none; display:block}
-.headernext{margin-top:2em; border-top:2px solid #000080; }
+h3.headernext{margin-top:2em; margin-bottom:2em; border-top:2px solid #000080; text-align:right}
 .next{padding-top:2em; display:block; text-align:right; margin-right:1em; padding-bottom:1em}
 .header-toc{border-bottom:2px solid #000080; margin-bottom:.25em}
 .header-bbottom{border-bottom:2px solid #000080}
@@ -121,3 +121,6 @@ td img{vertical-align:top}
 
 pre{background-color:#a1a1a1}
 pre code{font-size:1.5em}
+
+.winie7logo{display:block; float:left; width:200px; height:80px; background:url("i/windows-internet-explorer-version-7-tagline-w0200.png") 0 0 no-repeat; text-indent:-9999px}
+h1.headerlogo{line-height:80px}

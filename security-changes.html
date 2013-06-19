@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="content">
-      <header role="banner"></header>
+      <header role="banner"><h1 class="headerlogo"><b class="winie7logo"><abbr title="Internet Explorer Version 7">ie7</abbr></b>: Common Deployment Issues &#45; Tips and Tricks</h1></header>
       <div class="main" role="main">
         <article role="article">
           <section role="region">
@@ -24,8 +24,7 @@
               </figure>
               <p class="qap">There is no Group Policy Object setting to enable this feature. To enable it for your enterprise deployments you would need to either:</p>
               <ul>
-                <li>Use the <strong>Internet Explorer Administration Kit</strong> (<strong><abbr title="Internet Explorer Administration Toolkit">ieak</abbr></strong>) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or
-similar software delivery system).</li>
+                <li>Use the <strong>Internet Explorer Administration Kit</strong> (<strong><abbr title="Internet Explorer Administration Toolkit">ieak</abbr></strong>) 7 to build a custom Internet Explorer 7 package, and then deploy that MSI package using your Software Management System (SMS) infrastructure (or similar software delivery system).</li>
                 <li>Create a custom registry file to make this change and deploy it via login scripts. The registry key is located at:
 <pre><code>
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\InternetSettings\]
